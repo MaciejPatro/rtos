@@ -1,5 +1,8 @@
 project(stm32_hal)
 
+add_library(cmsis_lib INTERFACE)
+target_include_directories(cmsis_lib INTERFACE .)
+
 add_library(hal_tim STATIC hal/stm32f4xx_hal.h hal/stm32f4xx_hal_tim.c)
 target_include_directories(hal_tim PUBLIC $<BUILD_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}>)
 
