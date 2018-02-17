@@ -43,7 +43,7 @@
 #endif
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx.h"
+#include <CMSIS/stm32f4xx.h>
 #include "legacy/stm32_hal_legacy.h"
 #include <stdio.h>
 

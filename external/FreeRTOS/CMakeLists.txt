@@ -29,3 +29,4 @@ set(sources freertos/croutine.c
 
 add_library(freertos STATIC ${headers} ${sources})
 target_include_directories(freertos PUBLIC $<BUILD_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}>)
+target_link_libraries(freertos cmsis_lib)

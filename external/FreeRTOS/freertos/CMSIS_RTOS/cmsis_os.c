@@ -119,7 +119,7 @@
   #define __INLINE         inline                                     /*!< inline keyword for GNU Compiler       */
   #define __STATIC_INLINE  static inline
 
-  #include <cmsis_gcc.h>
+  #include <CMSIS/cmsis_gcc.h>
 
 
 /*

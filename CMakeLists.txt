@@ -31,13 +31,11 @@ add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(_
 
 file(GLOB_RECURSE SOURCES "startup/*.*" "Src/*.*" "Inc/*.*")
 
-include_directories(Inc
-        external/drivers/CMSIS)
+include_directories(Inc)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 add_subdirectory(external)
 target_link_libraries(${PROJECT_NAME}.elf PUBLIC
-        cmsis_lib
         freertos
         hal
         hal_rcc
