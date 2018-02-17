@@ -29,13 +29,13 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F407xx )
 
-file(GLOB_RECURSE SOURCES "startup/*.*" "external/Drivers/*.*" "Src/*.*" "Inc/*.*")
+file(GLOB_RECURSE SOURCES "startup/*.*" "external/drivers/*.*" "Src/*.*" "Inc/*.*")
 
 include_directories(Inc
-        external/Drivers/STM32F4xx_HAL_Driver/Inc
-        external/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        external/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        external/Drivers/CMSIS/Include
+        external/drivers/hal
+        external/drivers/hal/legacy
+        external/drivers/CMSIS/Device/ST/STM32F4xx/Include
+        external/drivers/CMSIS/Include
         stm32/gpio)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
@@ -51,7 +51,7 @@ add_custom_command(TARGET ${PROJECT_NAME}.elf POST_BUILD
         COMMAND ${CMAKE_OBJCOPY} -Oihex $<TARGET_FILE:${PROJECT_NAME}.elf> ${HEX_FILE}
         COMMAND ${CMAKE_OBJCOPY} -Obinary $<TARGET_FILE:${PROJECT_NAME}.elf> ${BIN_FILE}
         COMMENT "Building ${HEX_FILE}
-Building ${BIN_FILE}")
+        Building ${BIN_FILE}")
 
 add_custom_target(UPLOAD
         ${TOOLCHAIN_PATH}/arm-none-eabi-gdb -iex "target remote tcp:127.0.0.1:3333"

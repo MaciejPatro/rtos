@@ -173,7 +173,7 @@ typedef enum
   RNG_IRQn                    = 80,     /*!< RNG global Interrupt                                              */
   FPU_IRQn                    = 81      /*!< FPU global interrupt                                               */
 } IRQn_Type;
-/* Legacy define */
+/* legacy define */
 #define  HASH_RNG_IRQn      RNG_IRQn
 
 /**
@@ -936,7 +936,7 @@ typedef struct
 #define FLASH_OTP_END         0x1FFF7A0FU /*!< End address of : (up to 528 Bytes) embedded FLASH OTP Area                 */
 #define CCMDATARAM_END        0x1000FFFFU /*!< CCM data RAM end address                                                   */
 
-/* Legacy defines */
+/* legacy defines */
 #define SRAM_BASE             SRAM1_BASE
 #define SRAM_BB_BASE          SRAM1_BB_BASE
 
@@ -984,7 +984,7 @@ typedef struct
 #define ADC2_BASE             (APB2PERIPH_BASE + 0x2100U)
 #define ADC3_BASE             (APB2PERIPH_BASE + 0x2200U)
 #define ADC123_COMMON_BASE    (APB2PERIPH_BASE + 0x2300U)
-/* Legacy define */
+/* legacy define */
 #define ADC_BASE               ADC123_COMMON_BASE
 #define SDIO_BASE             (APB2PERIPH_BASE + 0x2C00U)
 #define SPI1_BASE             (APB2PERIPH_BASE + 0x3000U)
@@ -1107,7 +1107,7 @@ typedef struct
 #define ADC2                ((ADC_TypeDef *) ADC2_BASE)
 #define ADC3                ((ADC_TypeDef *) ADC3_BASE)
 #define ADC123_COMMON       ((ADC_Common_TypeDef *) ADC123_COMMON_BASE)
-/* Legacy define */
+/* legacy define */
 #define ADC                  ADC123_COMMON
 #define SDIO                ((SDIO_TypeDef *) SDIO_BASE)
 #define SPI1                ((SPI_TypeDef *) SPI1_BASE)
@@ -1719,7 +1719,7 @@ typedef struct
 #define ADC_CSR_OVR3_Msk          (0x1U << ADC_CSR_OVR3_Pos)                   /*!< 0x00200000 */
 #define ADC_CSR_OVR3              ADC_CSR_OVR3_Msk                             /*!<ADC3 DMA overrun  flag */
 
-/* Legacy defines */
+/* legacy defines */
 #define  ADC_CSR_DOVR1                        ADC_CSR_OVR1
 #define  ADC_CSR_DOVR2                        ADC_CSR_OVR2
 #define  ADC_CSR_DOVR3                        ADC_CSR_OVR3
@@ -1768,7 +1768,7 @@ typedef struct
 #define ADC_CDR_DATA2_Msk         (0xFFFFU << ADC_CDR_DATA2_Pos)               /*!< 0xFFFF0000 */
 #define ADC_CDR_DATA2             ADC_CDR_DATA2_Msk                            /*!<2nd data of a pair of regular conversions */
 
-/* Legacy defines */
+/* legacy defines */
 #define ADC_CDR_RDATA_MST         ADC_CDR_DATA1
 #define ADC_CDR_RDATA_SLV         ADC_CDR_DATA2
 
@@ -5682,7 +5682,7 @@ typedef struct
 #define DCMI_RIS_LINE_RIS_Pos      (4U)                                        
 #define DCMI_RIS_LINE_RIS_Msk      (0x1U << DCMI_RIS_LINE_RIS_Pos)             /*!< 0x00000010 */
 #define DCMI_RIS_LINE_RIS          DCMI_RIS_LINE_RIS_Msk                       
-/* Legacy defines */
+/* legacy defines */
 #define DCMI_RISR_FRAME_RIS                  DCMI_RIS_FRAME_RIS
 #define DCMI_RISR_OVR_RIS                    DCMI_RIS_OVR_RIS
 #define DCMI_RISR_ERR_RIS                    DCMI_RIS_ERR_RIS
@@ -5706,7 +5706,7 @@ typedef struct
 #define DCMI_IER_LINE_IE_Pos       (4U)                                        
 #define DCMI_IER_LINE_IE_Msk       (0x1U << DCMI_IER_LINE_IE_Pos)              /*!< 0x00000010 */
 #define DCMI_IER_LINE_IE           DCMI_IER_LINE_IE_Msk                        
-/* Legacy defines */
+/* legacy defines */
 #define DCMI_IER_OVF_IE                      DCMI_IER_OVR_IE
 
 /********************  Bits definition for DCMI_MIS register  *****************/
@@ -5726,7 +5726,7 @@ typedef struct
 #define DCMI_MIS_LINE_MIS_Msk      (0x1U << DCMI_MIS_LINE_MIS_Pos)             /*!< 0x00000010 */
 #define DCMI_MIS_LINE_MIS          DCMI_MIS_LINE_MIS_Msk                       
 
-/* Legacy defines */
+/* legacy defines */
 #define DCMI_MISR_FRAME_MIS                  DCMI_MIS_FRAME_MIS
 #define DCMI_MISR_OVF_MIS                    DCMI_MIS_OVR_MIS
 #define DCMI_MISR_ERR_MIS                    DCMI_MIS_ERR_MIS
@@ -5750,7 +5750,7 @@ typedef struct
 #define DCMI_ICR_LINE_ISC_Msk      (0x1U << DCMI_ICR_LINE_ISC_Pos)             /*!< 0x00000010 */
 #define DCMI_ICR_LINE_ISC          DCMI_ICR_LINE_ISC_Msk                       
 
-/* Legacy defines */
+/* legacy defines */
 #define DCMI_ICR_OVF_ISC                     DCMI_ICR_OVR_ISC
 
 /********************  Bits definition for DCMI_ESCR register  ******************/
@@ -5890,7 +5890,7 @@ typedef struct
 #define DMA_SxCR_EN_Msk          (0x1U << DMA_SxCR_EN_Pos)                     /*!< 0x00000001 */
 #define DMA_SxCR_EN              DMA_SxCR_EN_Msk                               
 
-/* Legacy defines */
+/* legacy defines */
 #define DMA_SxCR_ACK_Pos         (20U)                                         
 #define DMA_SxCR_ACK_Msk         (0x1U << DMA_SxCR_ACK_Pos)                    /*!< 0x00100000 */
 #define DMA_SxCR_ACK             DMA_SxCR_ACK_Msk                              
@@ -8127,7 +8127,7 @@ typedef struct
 #define GPIO_MODER_MODE15_0              (0x1U << GPIO_MODER_MODE15_Pos)       /*!< 0x40000000 */
 #define GPIO_MODER_MODE15_1              (0x2U << GPIO_MODER_MODE15_Pos)       /*!< 0x80000000 */
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_MODER_MODER0_Pos            (0U)                                  
 #define GPIO_MODER_MODER0_Msk            (0x3U << GPIO_MODER_MODER0_Pos)       /*!< 0x00000003 */
 #define GPIO_MODER_MODER0                GPIO_MODER_MODER0_Msk                 
@@ -8259,7 +8259,7 @@ typedef struct
 #define GPIO_OTYPER_OT15_Msk             (0x1U << GPIO_OTYPER_OT15_Pos)        /*!< 0x00008000 */
 #define GPIO_OTYPER_OT15                 GPIO_OTYPER_OT15_Msk                  
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_OTYPER_OT_0                    GPIO_OTYPER_OT0
 #define GPIO_OTYPER_OT_1                    GPIO_OTYPER_OT1
 #define GPIO_OTYPER_OT_2                    GPIO_OTYPER_OT2
@@ -8359,7 +8359,7 @@ typedef struct
 #define GPIO_OSPEEDR_OSPEED15_0          (0x1U << GPIO_OSPEEDR_OSPEED15_Pos)   /*!< 0x40000000 */
 #define GPIO_OSPEEDR_OSPEED15_1          (0x2U << GPIO_OSPEEDR_OSPEED15_Pos)   /*!< 0x80000000 */
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_OSPEEDER_OSPEEDR0              GPIO_OSPEEDR_OSPEED0
 #define GPIO_OSPEEDER_OSPEEDR0_0            GPIO_OSPEEDR_OSPEED0_0
 #define GPIO_OSPEEDER_OSPEEDR0_1            GPIO_OSPEEDR_OSPEED0_1
@@ -8491,7 +8491,7 @@ typedef struct
 #define GPIO_PUPDR_PUPD15_0              (0x1U << GPIO_PUPDR_PUPD15_Pos)       /*!< 0x40000000 */
 #define GPIO_PUPDR_PUPD15_1              (0x2U << GPIO_PUPDR_PUPD15_Pos)       /*!< 0x80000000 */
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_PUPDR_PUPDR0                   GPIO_PUPDR_PUPD0
 #define GPIO_PUPDR_PUPDR0_0                 GPIO_PUPDR_PUPD0_0
 #define GPIO_PUPDR_PUPDR0_1                 GPIO_PUPDR_PUPD0_1
@@ -8591,7 +8591,7 @@ typedef struct
 #define GPIO_IDR_ID15_Msk                (0x1U << GPIO_IDR_ID15_Pos)           /*!< 0x00008000 */
 #define GPIO_IDR_ID15                    GPIO_IDR_ID15_Msk                     
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_IDR_IDR_0                      GPIO_IDR_ID0
 #define GPIO_IDR_IDR_1                      GPIO_IDR_ID1
 #define GPIO_IDR_IDR_2                      GPIO_IDR_ID2
@@ -8658,7 +8658,7 @@ typedef struct
 #define GPIO_ODR_OD15_Pos                (15U)                                 
 #define GPIO_ODR_OD15_Msk                (0x1U << GPIO_ODR_OD15_Pos)           /*!< 0x00008000 */
 #define GPIO_ODR_OD15                    GPIO_ODR_OD15_Msk                     
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_ODR_ODR_0                       GPIO_ODR_OD0
 #define GPIO_ODR_ODR_1                       GPIO_ODR_OD1
 #define GPIO_ODR_ODR_2                       GPIO_ODR_OD2
@@ -8774,7 +8774,7 @@ typedef struct
 #define GPIO_BSRR_BR15_Msk               (0x1U << GPIO_BSRR_BR15_Pos)          /*!< 0x80000000 */
 #define GPIO_BSRR_BR15                   GPIO_BSRR_BR15_Msk                    
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_BSRR_BS_0                      GPIO_BSRR_BS0
 #define GPIO_BSRR_BS_1                      GPIO_BSRR_BS1
 #define GPIO_BSRR_BS_2                      GPIO_BSRR_BS2
@@ -8917,7 +8917,7 @@ typedef struct
 #define GPIO_AFRL_AFSEL7_2               (0x4U << GPIO_AFRL_AFSEL7_Pos)        /*!< 0x40000000 */
 #define GPIO_AFRL_AFSEL7_3               (0x8U << GPIO_AFRL_AFSEL7_Pos)        /*!< 0x80000000 */
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_AFRL_AFRL0                      GPIO_AFRL_AFSEL0
 #define GPIO_AFRL_AFRL0_0                    GPIO_AFRL_AFSEL0_0
 #define GPIO_AFRL_AFRL0_1                    GPIO_AFRL_AFSEL0_1
@@ -9017,7 +9017,7 @@ typedef struct
 #define GPIO_AFRH_AFSEL15_2              (0x4U << GPIO_AFRH_AFSEL15_Pos)       /*!< 0x40000000 */
 #define GPIO_AFRH_AFSEL15_3              (0x8U << GPIO_AFRH_AFSEL15_Pos)       /*!< 0x80000000 */
 
-/* Legacy defines */
+/* legacy defines */
 #define GPIO_AFRH_AFRH0                      GPIO_AFRH_AFSEL8
 #define GPIO_AFRH_AFRH0_0                    GPIO_AFRH_AFSEL8_0
 #define GPIO_AFRH_AFRH0_1                    GPIO_AFRH_AFSEL8_1
@@ -9406,7 +9406,7 @@ typedef struct
 #define PWR_CR_VOS_Msk         (0x1U << PWR_CR_VOS_Pos)                        /*!< 0x00004000 */
 #define PWR_CR_VOS             PWR_CR_VOS_Msk                                  /*!< VOS bit (Regulator voltage scaling output selection) */
 
-/* Legacy define */
+/* legacy define */
 #define  PWR_CR_PMODE                        PWR_CR_VOS
 
 /*******************  Bit definition for PWR_CSR register  ********************/
@@ -9432,7 +9432,7 @@ typedef struct
 #define PWR_CSR_VOSRDY_Msk     (0x1U << PWR_CSR_VOSRDY_Pos)                    /*!< 0x00004000 */
 #define PWR_CSR_VOSRDY         PWR_CSR_VOSRDY_Msk                              /*!< Regulator voltage scaling output selection ready */
 
-/* Legacy define */
+/* legacy define */
 #define  PWR_CSR_REGRDY                      PWR_CSR_VOSRDY
 
 /******************************************************************************/
@@ -10342,7 +10342,7 @@ typedef struct
 #define RCC_CSR_LPWRRSTF_Pos               (31U)                               
 #define RCC_CSR_LPWRRSTF_Msk               (0x1U << RCC_CSR_LPWRRSTF_Pos)      /*!< 0x80000000 */
 #define RCC_CSR_LPWRRSTF                   RCC_CSR_LPWRRSTF_Msk
-/* Legacy defines */
+/* legacy defines */
 #define RCC_CSR_PADRSTF                    RCC_CSR_PINRSTF
 #define RCC_CSR_WDGRSTF                    RCC_CSR_IWDGRSTF
 
@@ -10579,7 +10579,7 @@ typedef struct
 #define RTC_CR_WUCKSEL_1              (0x2U << RTC_CR_WUCKSEL_Pos)             /*!< 0x00000002 */
 #define RTC_CR_WUCKSEL_2              (0x4U << RTC_CR_WUCKSEL_Pos)             /*!< 0x00000004 */
 
-/* Legacy defines */
+/* legacy defines */
 #define RTC_CR_BCK                     RTC_CR_BKP
 
 /********************  Bits definition for RTC_ISR register  ******************/
@@ -10960,7 +10960,7 @@ typedef struct
 #define RTC_TAFCR_TAMP1E_Msk          (0x1U << RTC_TAFCR_TAMP1E_Pos)           /*!< 0x00000001 */
 #define RTC_TAFCR_TAMP1E              RTC_TAFCR_TAMP1E_Msk                     
 
-/* Legacy defines */
+/* legacy defines */
 #define RTC_TAFCR_TAMPINSEL           RTC_TAFCR_TAMP1INSEL
 
 /********************  Bits definition for RTC_ALRMASSR register  *************/
@@ -12668,7 +12668,7 @@ typedef struct
 #define WWDG_CR_T_4             (0x10U << WWDG_CR_T_Pos)                       /*!< 0x10 */
 #define WWDG_CR_T_5             (0x20U << WWDG_CR_T_Pos)                       /*!< 0x20 */
 #define WWDG_CR_T_6             (0x40U << WWDG_CR_T_Pos)                       /*!< 0x40 */
-/* Legacy defines */
+/* legacy defines */
 #define  WWDG_CR_T0                          WWDG_CR_T_0
 #define  WWDG_CR_T1                          WWDG_CR_T_1
 #define  WWDG_CR_T2                          WWDG_CR_T_2
@@ -12692,7 +12692,7 @@ typedef struct
 #define WWDG_CFR_W_4            (0x10U << WWDG_CFR_W_Pos)                      /*!< 0x0010 */
 #define WWDG_CFR_W_5            (0x20U << WWDG_CFR_W_Pos)                      /*!< 0x0020 */
 #define WWDG_CFR_W_6            (0x40U << WWDG_CFR_W_Pos)                      /*!< 0x0040 */
-/* Legacy defines */
+/* legacy defines */
 #define  WWDG_CFR_W0                         WWDG_CFR_W_0
 #define  WWDG_CFR_W1                         WWDG_CFR_W_1
 #define  WWDG_CFR_W2                         WWDG_CFR_W_2
@@ -12706,7 +12706,7 @@ typedef struct
 #define WWDG_CFR_WDGTB          WWDG_CFR_WDGTB_Msk                             /*!<WDGTB[1:0] bits (Timer Base) */
 #define WWDG_CFR_WDGTB_0        (0x1U << WWDG_CFR_WDGTB_Pos)                   /*!< 0x0080 */
 #define WWDG_CFR_WDGTB_1        (0x2U << WWDG_CFR_WDGTB_Pos)                   /*!< 0x0100 */
-/* Legacy defines */
+/* legacy defines */
 #define  WWDG_CFR_WDGTB0                     WWDG_CFR_WDGTB_0
 #define  WWDG_CFR_WDGTB1                     WWDG_CFR_WDGTB_1
 
@@ -14998,7 +14998,7 @@ typedef struct
 #define USB_OTG_PCGCCTL_PHYSUSP_Msk              (0x1U << USB_OTG_PCGCCTL_PHYSUSP_Pos) /*!< 0x00000010 */
 #define USB_OTG_PCGCCTL_PHYSUSP                  USB_OTG_PCGCCTL_PHYSUSP_Msk   /*!<Bit 1 */
 
-/* Legacy define */
+/* legacy define */
 /********************  Bit definition for OTG register  ********************/
 #define USB_OTG_CHNUM_Pos                        (0U)                          
 #define USB_OTG_CHNUM_Msk                        (0xFU << USB_OTG_CHNUM_Pos)   /*!< 0x0000000F */
@@ -15118,7 +15118,7 @@ typedef struct
 /*************************** I2S Extended Instances ***************************/
 #define IS_I2S_EXT_ALL_INSTANCE(INSTANCE) (((INSTANCE) == I2S2ext)|| \
                                            ((INSTANCE) == I2S3ext))
-/* Legacy Defines */
+/* legacy Defines */
 #define IS_I2S_ALL_INSTANCE_EXT    IS_I2S_EXT_ALL_INSTANCE
 
 /******************************* RNG Instances ********************************/
@@ -15434,7 +15434,7 @@ typedef struct
                                                ((INSTANCE) == UART5)  || \
                                                ((INSTANCE) == USART6))
 
-/* Legacy defines */
+/* legacy defines */
 #define IS_UART_INSTANCE          IS_UART_HALFDUPLEX_INSTANCE
 
 /****************** UART Instances : Hardware Flow control ********************/
