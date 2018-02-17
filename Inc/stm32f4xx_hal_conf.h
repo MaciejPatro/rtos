@@ -241,19 +241,19 @@
   */
 
 #ifdef HAL_RCC_MODULE_ENABLED
-  #include "stm32f4xx_hal_rcc.h"
+  #include <hal/stm32f4xx_hal_rcc.h>
 #endif /* HAL_RCC_MODULE_ENABLED */
 
 #ifdef HAL_GPIO_MODULE_ENABLED
-  #include "stm32f4xx_hal_gpio.h"
+  #include <hal/stm32f4xx_hal_gpio.h>
 #endif /* HAL_GPIO_MODULE_ENABLED */
 
 #ifdef HAL_DMA_MODULE_ENABLED
-  #include "stm32f4xx_hal_dma.h"
+  #include <hal/stm32f4xx_hal_dma.h>
 #endif /* HAL_DMA_MODULE_ENABLED */
    
 #ifdef HAL_CORTEX_MODULE_ENABLED
-  #include "stm32f4xx_hal_cortex.h"
+  #include <hal/stm32f4xx_hal_cortex.h>
 #endif /* HAL_CORTEX_MODULE_ENABLED */
 
 #ifdef HAL_ADC_MODULE_ENABLED
@@ -289,7 +289,7 @@
 #endif /* HAL_ETH_MODULE_ENABLED */
 
 #ifdef HAL_FLASH_MODULE_ENABLED
-  #include "stm32f4xx_hal_flash.h"
+  #include <hal/stm32f4xx_hal_flash.h>
 #endif /* HAL_FLASH_MODULE_ENABLED */
  
 #ifdef HAL_SRAM_MODULE_ENABLED
@@ -317,11 +317,11 @@
 #endif /* HAL_HASH_MODULE_ENABLED */
 
 #ifdef HAL_I2C_MODULE_ENABLED
- #include "stm32f4xx_hal_i2c.h"
+ #include <hal/stm32f4xx_hal_i2c.h>
 #endif /* HAL_I2C_MODULE_ENABLED */
 
 #ifdef HAL_I2S_MODULE_ENABLED
- #include "stm32f4xx_hal_i2s.h"
+ #include <hal/stm32f4xx_hal_i2s.h>
 #endif /* HAL_I2S_MODULE_ENABLED */
 
 #ifdef HAL_IWDG_MODULE_ENABLED
@@ -333,7 +333,7 @@
 #endif /* HAL_LTDC_MODULE_ENABLED */
 
 #ifdef HAL_PWR_MODULE_ENABLED
- #include "stm32f4xx_hal_pwr.h"
+ #include <hal/stm32f4xx_hal_pwr.h>
 #endif /* HAL_PWR_MODULE_ENABLED */
 
 #ifdef HAL_RNG_MODULE_ENABLED
@@ -357,11 +357,11 @@
 #endif /* HAL_MMC_MODULE_ENABLED */
 
 #ifdef HAL_SPI_MODULE_ENABLED
- #include "../external/drivers/hal/stm32f4xx_hal_spi.h"
+ #include <hal/stm32f4xx_hal_spi.h>
 #endif /* HAL_SPI_MODULE_ENABLED */
 
 #ifdef HAL_TIM_MODULE_ENABLED
- #include "../external/drivers/hal/stm32f4xx_hal_tim.h"
+ #include <hal/stm32f4xx_hal_tim.h>
 #endif /* HAL_TIM_MODULE_ENABLED */
 
 #ifdef HAL_UART_MODULE_ENABLED

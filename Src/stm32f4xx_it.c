@@ -31,7 +31,7 @@
   ******************************************************************************
   */
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
+#include <hal/stm32f4xx_hal.h>
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
 #include <freertos/CMSIS_RTOS/cmsis_os.h>

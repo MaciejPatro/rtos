@@ -1,5 +1,5 @@
 
-#include "stm32f4xx_hal.h"
+#include <hal/stm32f4xx_hal.h>
 
 extern void _Error_Handler(char *, int);
 

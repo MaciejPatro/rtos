@@ -47,8 +47,7 @@
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "stm32f4xx_hal.h"
-#include "../external/drivers/hal/stm32f4xx_hal_tim.h"
+#include <hal/stm32f4xx_hal.h>
 /** @addtogroup STM32F7xx_HAL_Examples
   * @{
   */
