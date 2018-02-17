@@ -59,3 +59,5 @@ add_custom_target(UPLOAD
         -iex "monitor program $<TARGET_FILE:${PROJECT_NAME}.elf>"
         -iex "monitor reset init"
         -iex "disconnect" -iex "quit")
+
+add_subdirectory(external)
