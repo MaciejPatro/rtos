@@ -34,9 +34,7 @@ file(GLOB_RECURSE SOURCES "startup/*.*" "external/Drivers/*.*" "Src/*.*" "Inc/*.
 include_directories(Inc
         external/Drivers/STM32F4xx_HAL_Driver/Inc
         external/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        external/FreeRTOS/freertos/portable/GCC/ARM_CM4F
         external/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        external/FreeRTOS/freertos/include
         external/Drivers/CMSIS/Include
         stm32/gpio)
 
