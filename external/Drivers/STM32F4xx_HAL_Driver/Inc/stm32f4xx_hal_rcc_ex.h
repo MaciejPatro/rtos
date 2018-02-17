@@ -107,11 +107,11 @@ typedef struct
 
   uint32_t PLLI2SQ;    /*!< Specifies the division factor for SAI clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 15. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
                            
   uint32_t PLLI2SR;    /*!< Specifies the division factor for I2S clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 7. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source I2S */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos I2S */
 }RCC_PLLI2SInitTypeDef;
 
 /** 
@@ -130,7 +130,7 @@ typedef struct
                                                              
   uint32_t PLLSAIQ;    /*!< Specifies the division factor for SAI clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 15.
-                            This parameter will be used only when PLLSAI is selected as Clock Source SAI */
+                            This parameter will be used only when PLLSAI is selected as Clock freertos SAI */
 }RCC_PLLSAIInitTypeDef;
 
 /** 
@@ -142,50 +142,50 @@ typedef struct
                                       This parameter can be a value of @ref RCCEx_Periph_Clock_Selection */
 
   RCC_PLLI2SInitTypeDef PLLI2S;  /*!< PLL I2S structure parameters. 
-                                      This parameter will be used only when PLLI2S is selected as Clock Source I2S or SAI */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos I2S or SAI */
 
   RCC_PLLSAIInitTypeDef PLLSAI;  /*!< PLL SAI structure parameters. 
-                                      This parameter will be used only when PLLI2S is selected as Clock Source SAI or LTDC */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos SAI or LTDC */
 
   uint32_t PLLI2SDivQ;           /*!< Specifies the PLLI2S division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
 
   uint32_t PLLSAIDivQ;           /*!< Specifies the PLLI2S division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLLSAI is selected as Clock Source SAI */
+                                      This parameter will be used only when PLLSAI is selected as Clock freertos SAI */
 
-  uint32_t Sai1ClockSelection;    /*!< Specifies SAI1 Clock Source Selection. 
+  uint32_t Sai1ClockSelection;    /*!< Specifies SAI1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SAI1_Clock_Source */
 
-  uint32_t Sai2ClockSelection;    /*!< Specifies SAI2 Clock Source Selection. 
+  uint32_t Sai2ClockSelection;    /*!< Specifies SAI2 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SAI2_Clock_Source */
                                       
-  uint32_t I2sApb1ClockSelection;    /*!< Specifies I2S APB1 Clock Source Selection. 
+  uint32_t I2sApb1ClockSelection;    /*!< Specifies I2S APB1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_I2SAPB1_Clock_Source */
 
-  uint32_t I2sApb2ClockSelection;    /*!< Specifies I2S APB2 Clock Source Selection. 
+  uint32_t I2sApb2ClockSelection;    /*!< Specifies I2S APB2 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_I2SAPB2_Clock_Source */
 
-  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock Source Selection. 
+  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock freertos Selection.
                                       This parameter can be a value of @ref RCC_RTC_Clock_Source */
 
-  uint32_t SdioClockSelection;    /*!< Specifies SDIO Clock Source Selection. 
+  uint32_t SdioClockSelection;    /*!< Specifies SDIO Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SDIO_Clock_Source */
 
-  uint32_t CecClockSelection;      /*!< Specifies CEC Clock Source Selection. 
+  uint32_t CecClockSelection;      /*!< Specifies CEC Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_CEC_Clock_Source */
 
-  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock Source Selection. 
+  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_FMPI2C1_Clock_Source */
 
-  uint32_t SpdifClockSelection;    /*!< Specifies SPDIFRX Clock Source Selection. 
+  uint32_t SpdifClockSelection;    /*!< Specifies SPDIFRX Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SPDIFRX_Clock_Source */
 
   uint32_t Clk48ClockSelection;     /*!< Specifies CLK48 Clock Selection this clock used OTG FS, SDIO and RNG clocks. 
                                       This parameter can be a value of @ref RCCEx_CLK48_Clock_Source */
   
-  uint8_t TIMPresSelection;      /*!< Specifies TIM Clock Source Selection. 
+  uint8_t TIMPresSelection;      /*!< Specifies TIM Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_TIM_PRescaler_Selection */
 }RCC_PeriphCLKInitTypeDef;
 #endif /* STM32F446xx */   
@@ -199,19 +199,19 @@ typedef struct
   uint32_t PeriphClockSelection;   /*!< The Extended Clock to be configured.
                                       This parameter can be a value of @ref RCCEx_Periph_Clock_Selection */
 
-  uint32_t I2SClockSelection;      /*!< Specifies RTC Clock Source Selection. 
+  uint32_t I2SClockSelection;      /*!< Specifies RTC Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_I2S_APB_Clock_Source */
                                       
-  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock Source Selection. 
+  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock freertos Selection.
                                       This parameter can be a value of @ref RCC_RTC_Clock_Source */
 
-  uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 Clock Source Selection. 
+  uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_LPTIM1_Clock_Source */
   
-  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock Source Selection. 
+  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_FMPI2C1_Clock_Source */
 
-  uint8_t TIMPresSelection;        /*!< Specifies TIM Clock Source Selection. 
+  uint8_t TIMPresSelection;        /*!< Specifies TIM Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_TIM_PRescaler_Selection */
 }RCC_PeriphCLKInitTypeDef;
 #endif /* STM32F410Tx || STM32F410Cx || STM32F410Rx */
@@ -230,11 +230,11 @@ typedef struct
 
   uint32_t PLLI2SQ;    /*!< Specifies the division factor for SAI clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 15. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
                            
   uint32_t PLLI2SR;    /*!< Specifies the division factor for I2S clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 7. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source I2S */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos I2S */
 }RCC_PLLI2SInitTypeDef;
 
 /** 
@@ -246,31 +246,31 @@ typedef struct
                                       This parameter can be a value of @ref RCCEx_Periph_Clock_Selection */
 
   RCC_PLLI2SInitTypeDef PLLI2S;  /*!< PLL I2S structure parameters. 
-                                      This parameter will be used only when PLLI2S is selected as Clock Source I2S */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos I2S */
   
 #if defined(STM32F413xx) || defined(STM32F423xx)
   uint32_t PLLDivR;              /*!< Specifies the PLL division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLL is selected as Clock Source SAI */
+                                      This parameter will be used only when PLL is selected as Clock freertos SAI */
 
   uint32_t PLLI2SDivR;           /*!< Specifies the PLLI2S division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
 #endif /* STM32F413xx || STM32F423xx */  
                                       
-  uint32_t I2sApb1ClockSelection;    /*!< Specifies I2S APB1 Clock Source Selection. 
+  uint32_t I2sApb1ClockSelection;    /*!< Specifies I2S APB1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_I2SAPB1_Clock_Source */
 
-  uint32_t I2sApb2ClockSelection;    /*!< Specifies I2S APB2 Clock Source Selection. 
+  uint32_t I2sApb2ClockSelection;    /*!< Specifies I2S APB2 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_I2SAPB2_Clock_Source */
 
-  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock Source Selection. 
+  uint32_t RTCClockSelection;      /*!< Specifies RTC Clock freertos Selection.
                                       This parameter can be a value of @ref RCC_RTC_Clock_Source */
 
-  uint32_t SdioClockSelection;    /*!< Specifies SDIO Clock Source Selection. 
+  uint32_t SdioClockSelection;    /*!< Specifies SDIO Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SDIO_Clock_Source */
 
-  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock Source Selection. 
+  uint32_t Fmpi2c1ClockSelection;  /*!< Specifies FMPI2C1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_FMPI2C1_Clock_Source */
 
   uint32_t Clk48ClockSelection;     /*!< Specifies CLK48 Clock Selection this clock used OTG FS, SDIO and RNG clocks.
@@ -289,7 +289,7 @@ typedef struct
   uint32_t Dfsdm2AudioClockSelection;/*!< Specifies DFSDM2 Audio Clock Selection.
                                       This parameter can be a value of @ref RCCEx_DFSDM2_Audio_Clock_Source */
   
-  uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 Clock Source Selection. 
+  uint32_t Lptim1ClockSelection;   /*!< Specifies LPTIM1 Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_LPTIM1_Clock_Source */
   
   uint32_t SaiAClockSelection;     /*!< Specifies SAI1_A Clock Prescalers Selection
@@ -299,10 +299,10 @@ typedef struct
                                         This parameter can be a value of @ref RCCEx_SAI1_BlockB_Clock_Source */
 #endif /* STM32F413xx || STM32F423xx */
 
-  uint32_t PLLI2SSelection;      /*!< Specifies PLL I2S Clock Source Selection. 
+  uint32_t PLLI2SSelection;      /*!< Specifies PLL I2S Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_PLL_I2S_Clock_Source */
 
-  uint8_t TIMPresSelection;      /*!< Specifies TIM Clock Source Selection. 
+  uint8_t TIMPresSelection;      /*!< Specifies TIM Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_TIM_PRescaler_Selection */
 }RCC_PeriphCLKInitTypeDef;
 #endif /* STM32F412Zx || STM32F412Vx || STM32F412Rx || STM32F412Cx || STM32F413xx || STM32F423xx */
@@ -316,15 +316,15 @@ typedef struct
 {
   uint32_t PLLI2SN;    /*!< Specifies the multiplication factor for PLLI2S VCO output clock.
                             This parameter must be a number between Min_Data = 50 and Max_Data = 432.
-                            This parameter will be used only when PLLI2S is selected as Clock Source I2S or SAI */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos I2S or SAI */
 
   uint32_t PLLI2SR;    /*!< Specifies the division factor for I2S clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 7. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source I2S or SAI */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos I2S or SAI */
 
   uint32_t PLLI2SQ;    /*!< Specifies the division factor for SAI1 clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 15. 
-                            This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                            This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
 }RCC_PLLI2SInitTypeDef;
 
 /** 
@@ -334,7 +334,7 @@ typedef struct
 {
   uint32_t PLLSAIN;    /*!< Specifies the multiplication factor for PLLI2S VCO output clock.
                             This parameter must be a number between Min_Data = 50 and Max_Data = 432.
-                            This parameter will be used only when PLLSAI is selected as Clock Source SAI or LTDC */ 
+                            This parameter will be used only when PLLSAI is selected as Clock freertos SAI or LTDC */
 #if defined(STM32F469xx) || defined(STM32F479xx)
   uint32_t PLLSAIP;    /*!< Specifies division factor for OTG FS and SDIO clocks.
                             This parameter is only available in STM32F469xx/STM32F479xx devices.
@@ -343,11 +343,11 @@ typedef struct
                                  
   uint32_t PLLSAIQ;    /*!< Specifies the division factor for SAI1 clock.
                             This parameter must be a number between Min_Data = 2 and Max_Data = 15.
-                            This parameter will be used only when PLLSAI is selected as Clock Source SAI or LTDC */
+                            This parameter will be used only when PLLSAI is selected as Clock freertos SAI or LTDC */
                               
   uint32_t PLLSAIR;    /*!< specifies the division factor for LTDC clock
                             This parameter must be a number between Min_Data = 2 and Max_Data = 7.
-                            This parameter will be used only when PLLSAI is selected as Clock Source LTDC */
+                            This parameter will be used only when PLLSAI is selected as Clock freertos LTDC */
 
 }RCC_PLLSAIInitTypeDef;
 
@@ -360,18 +360,18 @@ typedef struct
                                       This parameter can be a value of @ref RCCEx_Periph_Clock_Selection */
 
   RCC_PLLI2SInitTypeDef PLLI2S;  /*!< PLL I2S structure parameters. 
-                                      This parameter will be used only when PLLI2S is selected as Clock Source I2S or SAI */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos I2S or SAI */
 
   RCC_PLLSAIInitTypeDef PLLSAI;  /*!< PLL SAI structure parameters. 
-                                      This parameter will be used only when PLLI2S is selected as Clock Source SAI or LTDC */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos SAI or LTDC */
 
   uint32_t PLLI2SDivQ;           /*!< Specifies the PLLI2S division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLLI2S is selected as Clock Source SAI */
+                                      This parameter will be used only when PLLI2S is selected as Clock freertos SAI */
 
   uint32_t PLLSAIDivQ;           /*!< Specifies the PLLI2S division factor for SAI1 clock.
                                       This parameter must be a number between Min_Data = 1 and Max_Data = 32
-                                      This parameter will be used only when PLLSAI is selected as Clock Source SAI */
+                                      This parameter will be used only when PLLSAI is selected as Clock freertos SAI */
 
   uint32_t PLLSAIDivR;           /*!< Specifies the PLLSAI division factor for LTDC clock.
                                       This parameter must be one value of @ref RCCEx_PLLSAI_DIVR */
@@ -385,7 +385,7 @@ typedef struct
   uint32_t Clk48ClockSelection;  /*!< Specifies CLK48 Clock Selection this clock used OTG FS, SDIO and RNG clocks. 
                                       This parameter can be a value of @ref RCCEx_CLK48_Clock_Source */
 
-  uint32_t SdioClockSelection;   /*!< Specifies SDIO Clock Source Selection. 
+  uint32_t SdioClockSelection;   /*!< Specifies SDIO Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_SDIO_Clock_Source */  
 #endif /* STM32F469xx || STM32F479xx */  
 }RCC_PeriphCLKInitTypeDef;
@@ -429,7 +429,7 @@ typedef struct
   uint32_t RTCClockSelection;      /*!< Specifies RTC Clock Prescalers Selection.
                                        This parameter can be a value of @ref RCC_RTC_Clock_Source */
 #if defined(STM32F401xC) || defined(STM32F401xE) || defined(STM32F411xE) 
-  uint8_t TIMPresSelection;        /*!< Specifies TIM Clock Source Selection. 
+  uint8_t TIMPresSelection;        /*!< Specifies TIM Clock freertos Selection.
                                       This parameter can be a value of @ref RCCEx_TIM_PRescaler_Selection */
 #endif /* STM32F401xC || STM32F401xE || STM32F411xE */
 }RCC_PeriphCLKInitTypeDef;
@@ -593,7 +593,7 @@ typedef struct
   */
 
 #if defined(STM32F427xx) || defined(STM32F437xx) || defined(STM32F429xx) || defined(STM32F439xx) || defined(STM32F469xx) || defined(STM32F479xx)
-/** @defgroup RCCEx_SAI_BlockA_Clock_Source  RCC SAI BlockA Clock Source
+/** @defgroup RCCEx_SAI_BlockA_Clock_Source  RCC SAI BlockA Clock freertos
   * @{
   */
 #define RCC_SAIACLKSOURCE_PLLSAI             0x00000000U
@@ -603,7 +603,7 @@ typedef struct
   * @}
   */ 
 
-/** @defgroup RCCEx_SAI_BlockB_Clock_Source  RCC SAI BlockB Clock Source
+/** @defgroup RCCEx_SAI_BlockB_Clock_Source  RCC SAI BlockB Clock freertos
   * @{
   */
 #define RCC_SAIBCLKSOURCE_PLLSAI             0x00000000U
@@ -615,7 +615,7 @@ typedef struct
 #endif /* STM32F427xx || STM32F437xx || STM32F429xx || STM32F439xx || STM32F469xx || STM32F479xx */
       
 #if defined(STM32F469xx) || defined(STM32F479xx)
-/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock Source
+/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock freertos
   * @{
   */
 #define RCC_CLK48CLKSOURCE_PLLQ              0x00000000U
@@ -624,7 +624,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock Source
+/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock freertos
   * @{
   */
 #define RCC_SDIOCLKSOURCE_CLK48             0x00000000U
@@ -633,7 +633,7 @@ typedef struct
   * @}
   */    
   
-/** @defgroup RCCEx_DSI_Clock_Source  RCC DSI Clock Source
+/** @defgroup RCCEx_DSI_Clock_Source  RCC DSI Clock freertos
   * @{
   */
 #define RCC_DSICLKSOURCE_DSIPHY             0x00000000U
@@ -644,7 +644,7 @@ typedef struct
 #endif /* STM32F469xx || STM32F479xx */
 
 #if defined(STM32F446xx)
-/** @defgroup RCCEx_SAI1_Clock_Source RCC SAI1 Clock Source 
+/** @defgroup RCCEx_SAI1_Clock_Source RCC SAI1 Clock freertos
   * @{
   */
 #define RCC_SAI1CLKSOURCE_PLLSAI             0x00000000U
@@ -655,7 +655,7 @@ typedef struct
   * @}
   */ 
 
-/** @defgroup RCCEx_SAI2_Clock_Source  RCC SAI2 Clock Source
+/** @defgroup RCCEx_SAI2_Clock_Source  RCC SAI2 Clock freertos
   * @{
   */
 #define RCC_SAI2CLKSOURCE_PLLSAI             0x00000000U
@@ -666,7 +666,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_I2SAPB1_Clock_Source  RCC I2S APB1 Clock Source
+/** @defgroup RCCEx_I2SAPB1_Clock_Source  RCC I2S APB1 Clock freertos
   * @{
   */
 #define RCC_I2SAPB1CLKSOURCE_PLLI2S          0x00000000U
@@ -677,7 +677,7 @@ typedef struct
   * @}
   */ 
 
-/** @defgroup RCCEx_I2SAPB2_Clock_Source  RCC I2S APB2 Clock Source
+/** @defgroup RCCEx_I2SAPB2_Clock_Source  RCC I2S APB2 Clock freertos
   * @{
   */
 #define RCC_I2SAPB2CLKSOURCE_PLLI2S          0x00000000U
@@ -688,7 +688,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock Source
+/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock freertos
   * @{
   */
 #define RCC_FMPI2C1CLKSOURCE_PCLK1            0x00000000U
@@ -698,7 +698,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_CEC_Clock_Source  RCC CEC Clock Source
+/** @defgroup RCCEx_CEC_Clock_Source  RCC CEC Clock freertos
   * @{
   */
 #define RCC_CECCLKSOURCE_HSI                0x00000000U
@@ -707,7 +707,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock Source
+/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock freertos
   * @{
   */
 #define RCC_CLK48CLKSOURCE_PLLQ              0x00000000U
@@ -716,7 +716,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock Source
+/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock freertos
   * @{
   */
 #define RCC_SDIOCLKSOURCE_CLK48             0x00000000U
@@ -725,7 +725,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_SPDIFRX_Clock_Source   RCC SPDIFRX Clock Source
+/** @defgroup RCCEx_SPDIFRX_Clock_Source   RCC SPDIFRX Clock freertos
   * @{
   */
 #define RCC_SPDIFRXCLKSOURCE_PLLR           0x00000000U
@@ -737,7 +737,7 @@ typedef struct
 #endif /* STM32F446xx */
 
 #if defined(STM32F413xx) || defined(STM32F423xx)
-/** @defgroup RCCEx_SAI1_BlockA_Clock_Source  RCC SAI BlockA Clock Source
+/** @defgroup RCCEx_SAI1_BlockA_Clock_Source  RCC SAI BlockA Clock freertos
   * @{
   */
 #define RCC_SAIACLKSOURCE_PLLI2SR            0x00000000U
@@ -748,7 +748,7 @@ typedef struct
   * @}
   */ 
 
-/** @defgroup RCCEx_SAI1_BlockB_Clock_Source  RCC SAI BlockB Clock Source
+/** @defgroup RCCEx_SAI1_BlockB_Clock_Source  RCC SAI BlockB Clock freertos
   * @{
   */
 #define RCC_SAIBCLKSOURCE_PLLI2SR            0x00000000U
@@ -759,7 +759,7 @@ typedef struct
   * @}
   */ 
       
-/** @defgroup RCCEx_LPTIM1_Clock_Source  RCC LPTIM1 Clock Source
+/** @defgroup RCCEx_LPTIM1_Clock_Source  RCC LPTIM1 Clock freertos
   * @{
   */
 #define RCC_LPTIM1CLKSOURCE_PCLK1           0x00000000U
@@ -771,7 +771,7 @@ typedef struct
   */
       
 
-/** @defgroup RCCEx_DFSDM2_Audio_Clock_Source  RCC DFSDM2 Audio Clock Source
+/** @defgroup RCCEx_DFSDM2_Audio_Clock_Source  RCC DFSDM2 Audio Clock freertos
   * @{
   */
 #define RCC_DFSDM2AUDIOCLKSOURCE_I2S1       0x00000000U
@@ -780,7 +780,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_DFSDM2_Kernel_Clock_Source  RCC DFSDM2 Kernel Clock Source
+/** @defgroup RCCEx_DFSDM2_Kernel_Clock_Source  RCC DFSDM2 Kernel Clock freertos
   * @{
   */
 #define RCC_DFSDM2CLKSOURCE_PCLK2           0x00000000U
@@ -792,7 +792,7 @@ typedef struct
 #endif /* STM32F413xx || STM32F423xx */
 
 #if defined(STM32F412Zx) || defined(STM32F412Vx) || defined(STM32F412Rx) || defined(STM32F412Cx) || defined(STM32F413xx) || defined(STM32F423xx)
-/** @defgroup RCCEx_PLL_I2S_Clock_Source PLL I2S Clock Source
+/** @defgroup RCCEx_PLL_I2S_Clock_Source PLL I2S Clock freertos
   * @{
   */
 #define RCC_PLLI2SCLKSOURCE_PLLSRC          0x00000000U 
@@ -801,7 +801,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_DFSDM1_Audio_Clock_Source  RCC DFSDM1 Audio Clock Source
+/** @defgroup RCCEx_DFSDM1_Audio_Clock_Source  RCC DFSDM1 Audio Clock freertos
   * @{
   */
 #define RCC_DFSDM1AUDIOCLKSOURCE_I2S1       0x00000000U
@@ -810,7 +810,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_DFSDM1_Kernel_Clock_Source  RCC DFSDM1 Kernel Clock Source
+/** @defgroup RCCEx_DFSDM1_Kernel_Clock_Source  RCC DFSDM1 Kernel Clock freertos
   * @{
   */
 #define RCC_DFSDM1CLKSOURCE_PCLK2           0x00000000U
@@ -819,7 +819,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_I2SAPB1_Clock_Source  RCC I2S APB1 Clock Source
+/** @defgroup RCCEx_I2SAPB1_Clock_Source  RCC I2S APB1 Clock freertos
   * @{
   */
 #define RCC_I2SAPB1CLKSOURCE_PLLI2S         0x00000000U
@@ -830,7 +830,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_I2SAPB2_Clock_Source  RCC I2S APB2 Clock Source
+/** @defgroup RCCEx_I2SAPB2_Clock_Source  RCC I2S APB2 Clock freertos
   * @{
   */
 #define RCC_I2SAPB2CLKSOURCE_PLLI2S         0x00000000U
@@ -841,7 +841,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock Source
+/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock freertos
   * @{
   */
 #define RCC_FMPI2C1CLKSOURCE_PCLK1          0x00000000U
@@ -851,7 +851,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock Source
+/** @defgroup RCCEx_CLK48_Clock_Source  RCC CLK48 Clock freertos
   * @{
   */
 #define RCC_CLK48CLKSOURCE_PLLQ             0x00000000U
@@ -860,7 +860,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock Source
+/** @defgroup RCCEx_SDIO_Clock_Source  RCC SDIO Clock freertos
   * @{
   */
 #define RCC_SDIOCLKSOURCE_CLK48             0x00000000U
@@ -872,7 +872,7 @@ typedef struct
 
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx)
 
-/** @defgroup RCCEx_I2S_APB_Clock_Source  RCC I2S APB Clock Source
+/** @defgroup RCCEx_I2S_APB_Clock_Source  RCC I2S APB Clock freertos
   * @{
   */
 #define RCC_I2SAPBCLKSOURCE_PLLR            0x00000000U
@@ -882,7 +882,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock Source
+/** @defgroup RCCEx_FMPI2C1_Clock_Source  RCC FMPI2C1 Clock freertos
   * @{
   */
 #define RCC_FMPI2C1CLKSOURCE_PCLK1              0x00000000U
@@ -892,7 +892,7 @@ typedef struct
   * @}
   */
 
-/** @defgroup RCCEx_LPTIM1_Clock_Source  RCC LPTIM1 Clock Source
+/** @defgroup RCCEx_LPTIM1_Clock_Source  RCC LPTIM1 Clock freertos
   * @{
   */
 #define RCC_LPTIM1CLKSOURCE_PCLK1          0x00000000U
@@ -956,7 +956,7 @@ typedef struct
           STM32F412Rx || STM32F413xx | STM32F423xx */
 
 #if defined(STM32F410Tx) || defined(STM32F410Cx) || defined(STM32F410Rx)
-/** @defgroup RCC_MCO2_Clock_Source MCO2 Clock Source
+/** @defgroup RCC_MCO2_Clock_Source MCO2 Clock freertos
   * @{
   */
 #define RCC_MCO2SOURCE_SYSCLK            0x00000000U
@@ -6178,7 +6178,7 @@ typedef struct
   *            @arg RCC_SAI2CLKSOURCE_PLLI2S: PLLI2S_Q clock divided by PLLI2SDIVQ used as SAI2 clock. 
   *            @arg RCC_SAI2CLKSOURCE_PLLSAI: PLLISAI_Q clock divided by PLLSAIDIVQ used as SAI2 clock.
   *            @arg RCC_SAI2CLKSOURCE_PLLR: PLL VCO Output divided by PLLR used as SAI2 clock.  
-  *            @arg RCC_SAI2CLKSOURCE_PLLSRC: HSI or HSE depending from PLL Source clock used as SAI2 clock.
+  *            @arg RCC_SAI2CLKSOURCE_PLLSRC: HSI or HSE depending from PLL freertos clock used as SAI2 clock.
   */
 #define __HAL_RCC_SAI2_CONFIG(__SOURCE__) (MODIFY_REG(RCC->DCKCFGR, RCC_DCKCFGR_SAI2SRC, (__SOURCE__)))
 
@@ -6188,7 +6188,7 @@ typedef struct
   *            @arg RCC_SAI2CLKSOURCE_PLLI2S: PLLI2S_Q clock divided by PLLI2SDIVQ used as SAI2 clock. 
   *            @arg RCC_SAI2CLKSOURCE_PLLSAI: PLLISAI_Q clock divided by PLLSAIDIVQ used as SAI2 clock.
   *            @arg RCC_SAI2CLKSOURCE_PLLR: PLL VCO Output divided by PLLR used as SAI2 clock.  
-  *            @arg RCC_SAI2CLKSOURCE_PLLSRC: HSI or HSE depending from PLL Source clock used as SAI2 clock.
+  *            @arg RCC_SAI2CLKSOURCE_PLLSRC: HSI or HSE depending from PLL freertos clock used as SAI2 clock.
   */
 #define __HAL_RCC_GET_SAI2_SOURCE() (READ_BIT(RCC->DCKCFGR, RCC_DCKCFGR_SAI2SRC))
 

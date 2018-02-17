@@ -1652,7 +1652,7 @@ PRIVILEGED_FUNCTION BaseType_t xQueueGiveMutexRecursive( QueueHandle_t pxMutex )
  * Queue sets provide a mechanism to allow a task to block (pend) on a read
  * operation from multiple queues or semaphores simultaneously.
  *
- * See FreeRTOS/Source/Demo/Common/Minimal/QueueSet.c for an example using this
+ * See FreeRTOS/freertos/Demo/Common/Minimal/QueueSet.c for an example using this
  * function.
  *
  * A queue set must be explicitly created using a call to xQueueCreateSet()
@@ -1702,7 +1702,7 @@ PRIVILEGED_FUNCTION QueueSetHandle_t xQueueCreateSet( const UBaseType_t uxEventQ
  * Adds a queue or semaphore to a queue set that was previously created by a
  * call to xQueueCreateSet().
  *
- * See FreeRTOS/Source/Demo/Common/Minimal/QueueSet.c for an example using this
+ * See FreeRTOS/freertos/Demo/Common/Minimal/QueueSet.c for an example using this
  * function.
  *
  * Note 1:  A receive (in the case of a queue) or take (in the case of a
@@ -1726,7 +1726,7 @@ PRIVILEGED_FUNCTION BaseType_t xQueueAddToSet( QueueSetMemberHandle_t xQueueOrSe
  * Removes a queue or semaphore from a queue set.  A queue or semaphore can only
  * be removed from a set if the queue or semaphore is empty.
  *
- * See FreeRTOS/Source/Demo/Common/Minimal/QueueSet.c for an example using this
+ * See FreeRTOS/freertos/Demo/Common/Minimal/QueueSet.c for an example using this
  * function.
  *
  * @param xQueueOrSemaphore The handle of the queue or semaphore being removed
@@ -1748,7 +1748,7 @@ PRIVILEGED_FUNCTION BaseType_t xQueueRemoveFromSet( QueueSetMemberHandle_t xQueu
  * allows a task to block (pend) on a read operation on all the queues and
  * semaphores in a queue set simultaneously.
  *
- * See FreeRTOS/Source/Demo/Common/Minimal/QueueSet.c for an example using this
+ * See FreeRTOS/freertos/Demo/Common/Minimal/QueueSet.c for an example using this
  * function.
  *
  * Note 1:  See the documentation on http://wwwFreeRTOS.org/RTOS-queue-sets.html

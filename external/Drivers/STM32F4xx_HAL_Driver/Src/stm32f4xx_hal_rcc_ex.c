@@ -611,12 +611,12 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
           /* PLLSAI_VCO Input  = PLL_SOURCE/PLLSAIM */
           if((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSI)
           {
-            /* In Case the PLL Source is HSI (Internal Clock) */
+            /* In Case the PLL freertos is HSI (Internal Clock) */
             vcoinput = (HSI_VALUE / (uint32_t)(RCC->PLLSAICFGR & RCC_PLLSAICFGR_PLLSAIM));
           }
           else
           {
-            /* In Case the PLL Source is HSE (External Clock) */
+            /* In Case the PLL freertos is HSE (External Clock) */
             vcoinput = ((HSE_VALUE / (uint32_t)(RCC->PLLSAICFGR & RCC_PLLSAICFGR_PLLSAIM)));
           }
           /* PLLSAI_VCO Output = PLLSAI_VCO Input * PLLSAIN */
@@ -636,12 +636,12 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
           /* PLLI2S_VCO Input  = PLL_SOURCE/PLLI2SM */
           if((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSI)
           {
-            /* In Case the PLL Source is HSI (Internal Clock) */
+            /* In Case the PLL freertos is HSI (Internal Clock) */
             vcoinput = (HSI_VALUE / (uint32_t)(RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM));
           }
           else
           {
-            /* In Case the PLL Source is HSE (External Clock) */
+            /* In Case the PLL freertos is HSE (External Clock) */
             vcoinput = ((HSE_VALUE / (uint32_t)(RCC->PLLI2SCFGR & RCC_PLLI2SCFGR_PLLI2SM)));
           }
 
@@ -662,12 +662,12 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
           /* PLL_VCO Input  = PLL_SOURCE/PLLM */
           if((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSI)
           {
-            /* In Case the PLL Source is HSI (Internal Clock) */
+            /* In Case the PLL freertos is HSI (Internal Clock) */
             vcoinput = (HSI_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM));
           }
           else
           {
-            /* In Case the PLL Source is HSE (External Clock) */
+            /* In Case the PLL freertos is HSE (External Clock) */
             vcoinput = ((HSE_VALUE / (uint32_t)(RCC->PLLCFGR & RCC_PLLCFGR_PLLM)));
           }
 
@@ -686,12 +686,12 @@ uint32_t HAL_RCCEx_GetPeriphCLKFreq(uint32_t PeriphClk)
         {
           if((RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) == RCC_PLLSOURCE_HSI)
           {
-            /* In Case the PLL Source is HSI (Internal Clock) */
+            /* In Case the PLL freertos is HSI (Internal Clock) */
             frequency = (uint32_t)(HSI_VALUE);
           }
           else
           {
-            /* In Case the PLL Source is HSE (External Clock) */
+            /* In Case the PLL freertos is HSE (External Clock) */
             frequency = (uint32_t)(HSE_VALUE);
           }
           break;

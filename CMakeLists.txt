@@ -29,19 +29,20 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F407xx )
 
-file(GLOB_RECURSE SOURCES "startup/*.*" "external/*.*" "Drivers/*.*" "Src/*.*" "Inc/*.*")
+file(GLOB_RECURSE SOURCES "startup/*.*" "external/Drivers/*.*" "Src/*.*" "Inc/*.*")
 
 include_directories(Inc
         external/Drivers/STM32F4xx_HAL_Driver/Inc
         external/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy
-        external/FreeRTOS/Source/portable/GCC/ARM_CM4F
+        external/FreeRTOS/freertos/portable/GCC/ARM_CM4F
         external/Drivers/CMSIS/Device/ST/STM32F4xx/Include
-        external/FreeRTOS/Source/include
-        external/FreeRTOS/Source/CMSIS_RTOS
+        external/FreeRTOS/freertos/include
         external/Drivers/CMSIS/Include
         stm32/gpio)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
+add_subdirectory(external)
+target_link_libraries(${PROJECT_NAME}.elf freertos)
 
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map")
 
@@ -59,5 +60,3 @@ add_custom_target(UPLOAD
         -iex "monitor program $<TARGET_FILE:${PROJECT_NAME}.elf>"
         -iex "monitor reset init"
         -iex "disconnect" -iex "quit")
-
-add_subdirectory(external)

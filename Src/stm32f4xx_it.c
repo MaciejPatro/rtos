@@ -34,7 +34,7 @@
 #include "stm32f4xx_hal.h"
 #include "stm32f4xx.h"
 #include "stm32f4xx_it.h"
-#include "cmsis_os.h"
+#include <freertos/CMSIS_RTOS/cmsis_os.h>
 
 /* USER CODE BEGIN 0 */
 
