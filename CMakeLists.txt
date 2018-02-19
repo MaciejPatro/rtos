@@ -4,6 +4,7 @@ cmake_minimum_required(VERSION 3.10)
 
 # specify the cross compiler
 SET(CMAKE_C_COMPILER_WORKS 1)
+SET(CMAKE_CXX_COMPILER_WORKS 1)
 SET(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
 SET(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
 SET(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
