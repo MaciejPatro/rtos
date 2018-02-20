@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include <cstdint.h>
+#include <cstdint>
 
 namespace stm32 {
 

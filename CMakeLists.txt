@@ -30,9 +30,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F407xx )
 
-file(GLOB_RECURSE SOURCES "startup/*.*" "Src/*.*" "Inc/*.*")
+file(GLOB_RECURSE SOURCES "startup/*.*" "base/*.*")
 
-include_directories(Inc)
+include_directories(base)
 
 add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
 add_subdirectory(external)
