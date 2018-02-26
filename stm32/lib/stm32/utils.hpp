@@ -6,13 +6,10 @@
 
 #pragma once
 
-#include <stm32/utils/utils.hpp>
+#include <cstdint>
 
 namespace stm32 {
-namespace gpio {
 
-constexpr u8 set   = 1;
-constexpr u8 reset = 0;
+using memory_address = volatile uint32_t;
 
-} // namespace gpio
 } // namespace stm32
