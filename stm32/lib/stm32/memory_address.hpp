@@ -10,4 +10,6 @@
 
 namespace stm32 {
 
+using memory_address = volatile uint32_t;
+
 } // namespace stm32

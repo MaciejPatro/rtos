@@ -2,8 +2,6 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_VERSION 1)
 cmake_minimum_required(VERSION 3.10)
 
-option(deploy "deploy" OFF)
-if(deploy)
     # specify the cross compiler
     SET(CMAKE_C_COMPILER_WORKS 1)
     SET(CMAKE_CXX_COMPILER_WORKS 1)
@@ -64,6 +62,3 @@ if(deploy)
             -iex "monitor program $<TARGET_FILE:${PROJECT_NAME}.elf>"
             -iex "monitor reset init"
             -iex "disconnect" -iex "quit")
-elseif()
-    add_subdirectory(external)
-endif()
