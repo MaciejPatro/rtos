@@ -9,8 +9,7 @@ pipeline {
         }
         stage('Run UTs') {
             steps {
-                sh '../embedded_build/uts/exercises/ut/exercisesTests -r junit > ut_results.xml'
-		sh '../embedded_build/uts/small_programs/tail/ut/tailTests -r junit > ut_results2.xml'
+                sh '../embedded_build/uts/stm32/ut/stm32_tests -r junit > ut_results.xml'
             }
         }
         stage('Deploy') {
@@ -25,4 +24,3 @@ pipeline {
 	        junit 'ut_results*.xml'
 	    }
     }
-}
