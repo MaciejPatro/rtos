@@ -9,5 +9,5 @@
 
 TEST_CASE("GPIO basic testing", "[stm32][gpio]")
 {
-  REQUIRE(true);
+  REQUIRE(false);
 }
