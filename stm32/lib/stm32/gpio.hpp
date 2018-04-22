@@ -6,7 +6,7 @@
 
 #pragma once
 
-#include "utils.hpp"
+#include "memory_address.hpp"
 
 namespace stm32 {
 namespace gpio {

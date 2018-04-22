@@ -2,6 +2,17 @@ SET(CMAKE_SYSTEM_NAME Generic)
 SET(CMAKE_SYSTEM_VERSION 1)
 cmake_minimum_required(VERSION 3.10)
 
+option(testing "testing" OFF)
+
+set(CMAKE_CXX_STANDARD 17)
+
+if(testing)
+    SET(CMAKE_CXX_COMPILER clang++)
+    set(CMAKE_CXX_FLAGS "-std=c++17 -Wall -Wpedantic -Wno-c++98-compat")
+    add_subdirectory(testing/catch2)
+    add_subdirectory(stm32)
+    enable_testing()
+else()
     # specify the cross compiler
     SET(CMAKE_C_COMPILER_WORKS 1)
     SET(CMAKE_CXX_COMPILER_WORKS 1)
@@ -26,7 +37,6 @@ cmake_minimum_required(VERSION 3.10)
     SET(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections -T ${LINKER_SCRIPT}")
 
     PROJECT(rtos C ASM)
-    set(CMAKE_CXX_STANDARD 17)
 
     add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F407xx )
 
@@ -62,3 +72,4 @@ cmake_minimum_required(VERSION 3.10)
             -iex "monitor program $<TARGET_FILE:${PROJECT_NAME}.elf>"
             -iex "monitor reset init"
             -iex "disconnect" -iex "quit")
+endif()
