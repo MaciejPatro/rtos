@@ -1,40 +1,38 @@
-SET(CMAKE_SYSTEM_NAME Generic)
-SET(CMAKE_SYSTEM_VERSION 1)
+set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_VERSION 1)
 cmake_minimum_required(VERSION 3.10)
 
 option(testing "testing" OFF)
 
-set(CMAKE_CXX_STANDARD 17)
-
 if(testing)
-    SET(CMAKE_CXX_COMPILER clang++)
+    set(CMAKE_CXX_COMPILER clang++)
     set(CMAKE_CXX_FLAGS "-std=c++17 -Wall -Wpedantic -Wno-c++98-compat")
     add_subdirectory(testing/catch2)
     add_subdirectory(stm32)
     enable_testing()
 else()
     # specify the cross compiler
-    SET(CMAKE_C_COMPILER_WORKS 1)
-    SET(CMAKE_CXX_COMPILER_WORKS 1)
-    SET(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
-    SET(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
-    SET(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
-    SET(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-g++)
+    set(CMAKE_C_COMPILER_WORKS 1)
+    set(CMAKE_CXX_COMPILER_WORKS 1)
+    set(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
+    set(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
+    set(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
+    set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-g++)
     set(AS ${TOOLCHAIN_PATH}/arm-none-eabi-as)
     set(AR ${TOOLCHAIN_PATH}/arm-none-eabi-ar)
     set(OBJCOPY ${TOOLCHAIN_PATH}/arm-none-eabi-objcopy)
     set(OBJDUMP ${TOOLCHAIN_PATH}/arm-none-eabi-objdump)
     set(SIZE ${TOOLCHAIN_PATH}/arm-none-eabi-size)
 
-    SET(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407VGTx_FLASH.ld)
+    set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407VGTx_FLASH.ld)
 
     add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING)
-    SET(COMMON_FLAGS "-mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections
+    set(COMMON_FLAGS "-mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections
         -fdata-sections -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs")
 
-    SET(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++1z")
-    SET(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu11")
-    SET(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections -T ${LINKER_SCRIPT}")
+    set(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++1z")
+    set(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu11")
+    set(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections -T ${LINKER_SCRIPT}")
 
     PROJECT(rtos C ASM)
 
