@@ -3,6 +3,7 @@ project(stm32)
 set(headers
         stm32/gpio.hpp
         stm32/utils.hpp
+        stm32/pin.hpp
         stm32/memory_address.hpp)
 
 set(sources stm32/gpio.cpp)
