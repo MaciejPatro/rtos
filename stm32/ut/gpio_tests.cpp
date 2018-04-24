@@ -13,7 +13,7 @@ namespace gpio {
 
 TEST_CASE("GPIO basic testing", "[stm32][gpio]")
 {
-  memory_layout fake_memory;
+  memory_layout fake_memory{};
   gpio tested{fake_memory};
 
   SECTION("Gpio should correctly setup IO mode as output for given pin")
