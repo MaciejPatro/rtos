@@ -7,9 +7,28 @@
 #pragma once
 
 #include "memory_address.hpp"
+#include "pin.hpp"
 
 namespace stm32 {
 namespace gpio {
+
+enum class mode : std::uint32_t
+{
+  input     = 0x00000000U,
+  output_pp = 0x00000001U
+};
+
+enum class pull_state : std::uint32_t
+{
+  no_pull = 0x00000000U,
+  pull_up = 0x00000001U
+};
+
+enum class speed : std::uint32_t
+{
+  low    = 0x00000000U,
+  medium = 0x00000001U
+};
 
 struct memory_layout
 {
@@ -24,7 +43,7 @@ struct memory_layout
   memory_address AFR[2];
 };
 
-memory_layout& place_at(uint32_t addr)
+memory_layout& place_at(std::uint32_t addr)
 {
   return *reinterpret_cast<memory_layout*>(addr);
 }
@@ -39,8 +58,16 @@ class gpio
 {
 public:
   gpio(memory_layout& mem) : memory(mem) {}
+  void set_mode(mode m, std::uint16_t pin)
+  {
+    memory.MODER |= calculate_pin_mode_value(m, pin);
+  }
 
 private:
+  constexpr uint32_t calculate_pin_mode_value(mode m, std::uint16_t pin) const
+  {
+    return static_cast<std::uint32_t>(m) << pin * 2;
+  }
   memory_layout& memory;
 };
 
