@@ -25,6 +25,12 @@ TEST_CASE("GPIO basic testing", "[stm32][gpio]")
     {
       tested.set_mode(mode::output_pp, io_pin<0>::value);;
       REQUIRE(0x00000401U == fake_memory.MODER);
+
+      SECTION("New setup should override previous without changing other pins")
+      {
+        tested.set_mode(mode::input, io_pin<5>::value);
+        REQUIRE(0x00000001U == fake_memory.MODER);
+      }
     }
   }
 }

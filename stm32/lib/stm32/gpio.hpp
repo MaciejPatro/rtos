@@ -56,18 +56,29 @@ memory_layout& gpio_a()
 
 class gpio
 {
+private:
+  template<typename T>
+  constexpr uint32_t prepare_bit_values(T setting, std::uint16_t pin) const
+  {
+    return static_cast<std::uint32_t>(setting) << pin * 2;
+  }
+
 public:
   gpio(memory_layout& mem) : memory(mem) {}
   void set_mode(mode m, std::uint16_t pin)
   {
-    memory.MODER |= calculate_pin_mode_value(m, pin);
+    memory.MODER &= ~prepare_bit_values(dual_bit_mask, pin);
+    memory.MODER |= prepare_bit_values(m, pin);
+  }
+
+  void set_speed(speed s, std::uint16_t pin)
+  {
+    memory.OSPEEDR &= ~prepare_bit_values(dual_bit_mask, pin);
+    memory.OSPEEDR |= prepare_bit_values(s, pin);
   }
 
 private:
-  constexpr uint32_t calculate_pin_mode_value(mode m, std::uint16_t pin) const
-  {
-    return static_cast<std::uint32_t>(m) << pin * 2;
-  }
+  static constexpr std::uint32_t dual_bit_mask = 0x00000011U;
   memory_layout& memory;
 };
 
