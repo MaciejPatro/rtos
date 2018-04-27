@@ -7,6 +7,7 @@
 #pragma once
 
 #include "memory_address.hpp"
+#include "utils.hpp"
 #include "pin.hpp"
 
 namespace stm32 {
@@ -56,29 +57,32 @@ memory_layout& gpio_a()
 
 class gpio
 {
-private:
-  template<typename T>
-  constexpr uint32_t prepare_bit_values(T setting, std::uint16_t pin) const
-  {
-    return static_cast<std::uint32_t>(setting) << pin * 2;
-  }
-
 public:
   gpio(memory_layout& mem) : memory(mem) {}
+
   void set_mode(mode m, std::uint16_t pin)
   {
-    memory.MODER &= ~prepare_bit_values(dual_bit_mask, pin);
-    memory.MODER |= prepare_bit_values(m, pin);
+    fill_setting<mode, 2>(memory.MODER, m, pin);
+    fill_setting<io_type, 1>(memory.OTYPER, get_io_type(m), pin);
   }
 
   void set_speed(speed s, std::uint16_t pin)
   {
-    memory.OSPEEDR &= ~prepare_bit_values(dual_bit_mask, pin);
-    memory.OSPEEDR |= prepare_bit_values(s, pin);
+    fill_setting<speed, 2>(memory.OSPEEDR, s, pin);
   }
 
 private:
-  static constexpr std::uint32_t dual_bit_mask = 0x00000011U;
+  enum class io_type
+  {
+    input  = 0x00000000U,
+    output = 0x00000001U
+  };
+
+  io_type get_io_type(mode m)
+  {
+    return m == mode::input ? io_type::input : io_type::output;
+  }
+
   memory_layout& memory;
 };
 
