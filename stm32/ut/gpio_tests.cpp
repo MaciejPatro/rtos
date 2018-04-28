@@ -14,7 +14,7 @@ namespace gpio {
 TEST_CASE("GPIO basic testing", "[stm32][gpio]")
 {
   memory_layout fake_memory{};
-  gpio tested{fake_memory};
+  gpio          tested{ fake_memory };
 
   SECTION("Gpio should correctly setup IO mode as output for given pin")
   {
@@ -34,6 +34,19 @@ TEST_CASE("GPIO basic testing", "[stm32][gpio]")
         REQUIRE(0x00000001U == fake_memory.MODER);
         REQUIRE(0x00000001U == fake_memory.OTYPER);
       }
+    }
+  }
+
+  SECTION("Gpio should correctly set pull resistor state")
+  {
+    tested.set_pull_resistor(pull_resistor::pull_up, io_pin<6>::value);
+    tested.set_pull_resistor(pull_resistor::pull_down, io_pin<5>::value);
+    REQUIRE(0x00001800U == fake_memory.PUPDR);
+
+    SECTION("Should change only 5th pin state to clean")
+    {
+      tested.set_pull_resistor(pull_resistor::no_pull, io_pin<5>::value);
+      REQUIRE(0x00001000U == fake_memory.PUPDR);
     }
   }
 }

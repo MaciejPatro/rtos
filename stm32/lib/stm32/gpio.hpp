@@ -31,6 +31,13 @@ enum class speed : std::uint32_t
   medium = 0x00000001U
 };
 
+enum class pull_resistor : std::uint32_t
+{
+  no_pull   = 0x00000000U,
+  pull_up   = 0x00000001U,
+  pull_down = 0x00000002U
+};
+
 struct memory_layout
 {
   memory_address MODER;
@@ -43,17 +50,6 @@ struct memory_layout
   memory_address LCKR;
   memory_address AFR[2];
 };
-
-memory_layout& place_at(std::uint32_t addr)
-{
-  return *reinterpret_cast<memory_layout*>(addr);
-}
-
-memory_layout& gpio_a()
-{
-  constexpr auto gpio_a_address = 0x12345678;
-  return place_at(gpio_a_address);
-}
 
 class gpio
 {
@@ -69,6 +65,11 @@ public:
   void set_speed(speed s, std::uint16_t pin)
   {
     fill_setting<speed, 2>(memory.OSPEEDR, s, pin);
+  }
+
+  void set_pull_resistor(pull_resistor p, std::uint16_t pin)
+  {
+    fill_setting<pull_resistor, 2>(memory.PUPDR, p, pin);
   }
 
 private:
