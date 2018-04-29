@@ -21,7 +21,7 @@ pipeline {
     }
     post {
         always {
-	        junit '../embedded_build/uts/*.tests.xml'
+	        junit '../embedded_build/uts/stm32_tests.xml'
 	    }
     }
 }
