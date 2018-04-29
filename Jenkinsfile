@@ -21,7 +21,7 @@ pipeline {
     }
     post {
         always {
-            junit 'ut_results*.xml'
+            junit '../embedded_build/uts/*.xml'
         }
     }
 }
