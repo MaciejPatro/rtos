@@ -8,6 +8,7 @@
 
 #include "loops.hpp"
 #include <stm32/gpio.hpp>
+#include <freertos/task.h>
 
 namespace rtos {
 
@@ -20,9 +21,8 @@ public:
   void run();
 
 private:
-  stm32::gpio& gpio_port;
+  static constexpr TickType_t blink_delay = 200;
+  stm32::gpio&                gpio_port;
 };
-
-int some_function();
 
 } // namespace rtos

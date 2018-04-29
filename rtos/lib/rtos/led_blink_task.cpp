@@ -5,7 +5,6 @@
 ***********************************************/
 
 #include "led_blink_task.hpp"
-#include <stm32/gpio.hpp>
 
 namespace rtos {
 
@@ -17,6 +16,7 @@ void led_blink_task<LoopType>::run()
   while(loop_control())
   {
     gpio_port.toggle_pin(stm32::io_pin<2>::value);
+    vTaskDelay(blink_delay);
   }
 }
 

@@ -5,7 +5,11 @@ set(sources rtos/led_blink_task.cpp)
 
 add_library(rtos STATIC ${headers} ${sources})
 
-target_link_libraries(rtos PUBLIC stm32)
+if(testing)
+    target_link_libraries(rtos PUBLIC stm32 catch_support)
+else()
+    target_link_libraries(rtos PUBLIC stm32)
+endif()
 
 target_include_directories(rtos
         PUBLIC $<BUILD_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}>

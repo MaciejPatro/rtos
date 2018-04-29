@@ -22,6 +22,7 @@ if(testing)
 
     enable_testing()
     add_subdirectory(testing/catch2)
+    add_subdirectory(testing/support)
     add_subdirectory(stm32)
     add_subdirectory(rtos)
 else()
