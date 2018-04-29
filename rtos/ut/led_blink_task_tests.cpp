@@ -14,7 +14,7 @@ TEST_CASE("Basic test", "[product]")
 {
   SECTION("FIRST TEST")
   {
-    REQUIRE(0x1f == rtos::some_function());
+    REQUIRE(true);
   }
 }
 
