@@ -6,4 +6,4 @@ add_executable(stm32_tests
                utils_tests.cpp)
 
 target_link_libraries(stm32_tests PUBLIC catch stm32)
-add_test(NAME stm32_tests COMMAND stm32_tests)
+add_test(NAME stm32_tests COMMAND stm32_tests "-r junit" "-o ${CMAKE_BINARY_DIR}/${PROJECT_NAME}.xml")

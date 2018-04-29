@@ -12,7 +12,10 @@ namespace product {
 
 TEST_CASE("Basic test", "[product]")
 {
-  REQUIRE(true);
+  SECTION("FIRST TEST")
+  {
+    REQUIRE(true);
+  }
 }
 
 } // namespace product

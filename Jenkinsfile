@@ -9,7 +9,7 @@ pipeline {
         }
 	stage('Run UTs') {
             steps {
-                sh '../embedded_build/uts/stm32/ut/stm32_tests -r junit > ut_results.xml'
+                sh 'cd ../embedded_build/uts && ctest -j4'
             }
         }
         stage('Deploy') {
@@ -21,7 +21,7 @@ pipeline {
     }
     post {
         always {
-	        junit 'ut_results*.xml'
+	        junit '../embedded_build/uts/*tests.xml'
 	    }
     }
 }
