@@ -37,6 +37,7 @@ pipeline {
         always {
             sh 'cp ../embedded_build/uts/*.xml .'
             junit '*.xml'
+            sh 'rm -rf *.xml'
         }
     }
 }
