@@ -10,7 +10,10 @@ namespace rtos {
 
 struct forever
 {
-  bool operator()() const { return true; };
+  bool operator()() const
+  {
+    return true;
+  };
 };
 
 } // namespace rtos
