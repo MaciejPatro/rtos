@@ -22,7 +22,7 @@ pipeline {
     post {
         always {
             sh 'pwd'
-            junit '../embedded_build/uts/stm32_tests.xml'
+            junit '/var/lib/jenkins/workspace/embedded_build/uts/stm32_tests.xml'
         }
     }
 }
