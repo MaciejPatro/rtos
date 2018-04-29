@@ -1,9 +1,13 @@
 /***********************************************
 *
-* Created by mpatro on 2/17/18.
+* Created by mpatro on 4/29/18.
 *
 ***********************************************/
 
 #pragma once
 
-void mainloop();
+namespace product {
+
+int some_function();
+
+} // namespace product

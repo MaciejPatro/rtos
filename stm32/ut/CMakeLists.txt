@@ -5,5 +5,5 @@ add_executable(stm32_tests
                pin_tests.cpp
                utils_tests.cpp)
 
-target_link_libraries(stm32_tests catch stm32)
+target_link_libraries(stm32_tests PUBLIC catch stm32)
 add_test(NAME stm32_tests COMMAND stm32_tests)

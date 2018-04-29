@@ -7,5 +7,7 @@
 #include "gpio.hpp"
 
 namespace stm32 {
+namespace gpio {
 
-}
+} // namespace gpio
+} // namespace stm32
