@@ -1,6 +1,6 @@
 project(rtos)
 
-set(headers rtos/led_blink_task.hpp)
+set(headers rtos/led_blink_task.hpp rtos/loops.hpp)
 set(sources rtos/led_blink_task.cpp)
 
 
