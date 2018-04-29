@@ -11,34 +11,8 @@
 #include "pin.hpp"
 
 namespace stm32 {
-namespace gpio {
 
-enum class mode : std::uint32_t
-{
-  input     = 0x00000000U,
-  output_pp = 0x00000001U
-};
-
-enum class pull_state : std::uint32_t
-{
-  no_pull = 0x00000000U,
-  pull_up = 0x00000001U
-};
-
-enum class speed : std::uint32_t
-{
-  low    = 0x00000000U,
-  medium = 0x00000001U
-};
-
-enum class pull_resistor : std::uint32_t
-{
-  no_pull   = 0x00000000U,
-  pull_up   = 0x00000001U,
-  pull_down = 0x00000002U
-};
-
-struct memory_layout
+struct gpio_memory_layout
 {
   memory_address MODER;
   memory_address OTYPER;
@@ -54,7 +28,32 @@ struct memory_layout
 class gpio
 {
 public:
-  gpio(memory_layout& mem) : memory(mem) {}
+  gpio(gpio_memory_layout& mem) : memory(mem) {}
+
+  enum class mode : std::uint32_t
+  {
+    input     = 0x00000000U,
+    output_pp = 0x00000001U
+  };
+
+  enum class pull_state : std::uint32_t
+  {
+    no_pull = 0x00000000U,
+    pull_up = 0x00000001U
+  };
+
+  enum class speed : std::uint32_t
+  {
+    low    = 0x00000000U,
+    medium = 0x00000001U
+  };
+
+  enum class pull_resistor : std::uint32_t
+  {
+    no_pull   = 0x00000000U,
+    pull_up   = 0x00000001U,
+    pull_down = 0x00000002U
+  };
 
   void set_mode(mode m, std::uint16_t pin)
   {
@@ -72,6 +71,11 @@ public:
     fill_setting<pull_resistor, 2>(memory.PUPDR, p, pin);
   }
 
+  void toggle_pin(std::uint16_t pin)
+  {
+    memory.BSRR ^= 1 << pin;
+  }
+
 private:
   enum class io_type
   {
@@ -84,8 +88,7 @@ private:
     return m == mode::input ? io_type::input : io_type::output;
   }
 
-  memory_layout& memory;
+  gpio_memory_layout& memory;
 };
 
-} // namespace gpio
 } // namespace stm32
