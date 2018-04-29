@@ -21,7 +21,8 @@ pipeline {
     }
     post {
         always {
-            junit '../embedded_build/uts/*.xml'
+            sh 'cp ../embedded_build/uts/*.xml .'
+            junit '*.xml'
         }
     }
 }
