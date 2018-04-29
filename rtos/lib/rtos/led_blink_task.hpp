@@ -6,8 +6,8 @@
 
 #pragma once
 
-namespace product {
+namespace rtos {
 
 int some_function();
 
-} // namespace product
+} // namespace rtos

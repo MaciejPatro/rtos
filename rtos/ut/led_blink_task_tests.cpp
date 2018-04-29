@@ -6,9 +6,9 @@
 
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
-#include <product/led_blink_task.hpp>
+#include <rtos/led_blink_task.hpp>
 
-namespace product {
+namespace rtos {
 
 TEST_CASE("Basic test", "[product]")
 {
@@ -18,4 +18,4 @@ TEST_CASE("Basic test", "[product]")
   }
 }
 
-} // namespace product
+} // namespace rtos

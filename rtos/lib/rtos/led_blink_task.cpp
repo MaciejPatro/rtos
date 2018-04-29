@@ -7,11 +7,11 @@
 #include "led_blink_task.hpp"
 #include <stm32/gpio.hpp>
 
-namespace product {
+namespace rtos {
 
 int some_function()
 {
   return stm32::bit_mask<5>::value;
 }
 
-} // namespace product
+} // namespace rtos
