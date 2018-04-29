@@ -7,7 +7,7 @@ pipeline {
                 sh 'cd ../embedded_build/uts && make -j4'
             }
         }
-	stage('Run UTs') {
+    stage('Run UTs') {
             steps {
                 sh 'cd ../embedded_build/uts && ctest -j4'
             }
@@ -21,7 +21,8 @@ pipeline {
     }
     post {
         always {
-	        junit '../embedded_build/uts/stm32_tests.xml'
-	    }
+            sh 'pwd'
+            junit '../embedded_build/uts/stm32_tests.xml'
+        }
     }
 }
