@@ -15,7 +15,7 @@ struct times
 
   bool operator()() const
   {
-    run_count-- != 0;
+    return run_count-- != 0;
   };
 };
 
