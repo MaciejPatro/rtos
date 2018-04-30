@@ -10,7 +10,7 @@
 
 namespace stm32 {
 
-TEST_CASE("gpio", "[stm32][gpio]")
+TEST_CASE("Gpio class", "[stm32][gpio]")
 {
   gpio_memory_layout fake_memory{};
   gpio               tested{ fake_memory };
