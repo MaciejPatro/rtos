@@ -29,7 +29,6 @@ public:
     }
   }
 
-
 private:
   static constexpr TickType_t blink_delay = 200;
   stm32::gpio&                gpio_port;
