@@ -8,7 +8,7 @@
 
 #include "loops.hpp"
 #include <stm32/gpio.hpp>
-#include <freertos/task.h>
+#include <freertos/CMSIS_RTOS/cmsis_os.h>
 
 namespace rtos {
 
@@ -25,13 +25,13 @@ public:
     while(loop_control())
     {
       gpio_port.toggle_pin(stm32::io_pin<2>::value);
-      vTaskDelay(blink_delay);
+      osDelay(blink_delay);
     }
   }
 
 private:
-  static constexpr TickType_t blink_delay = 200;
-  stm32::gpio&                gpio_port;
+  static constexpr std::uint32_t blink_delay = 200;
+  stm32::gpio&                   gpio_port;
 };
 
 } // namespace rtos

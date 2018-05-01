@@ -19,7 +19,7 @@ struct times
   };
 };
 
-using once = times<1>;
+using once  = times<1>;
 using twice = times<2>;
 
 } // namespace rtos

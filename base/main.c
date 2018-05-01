@@ -1,5 +1,6 @@
 
 #include "main.h"
+#include "main_loop.hpp"
 #include <hal/stm32f4xx_hal.h>
 #include <freertos/CMSIS_RTOS/cmsis_os.h>
 
@@ -18,9 +19,7 @@ int main(void)
   defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
   osKernelStart();
 
-  while(1)
-  {
-  }
+  main_loop();
 }
 
 void SystemClock_Config(void)
@@ -187,10 +186,10 @@ void StartDefaultTask(void const* argument)
   for(;;)
   {
     osDelay(100);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(LD3_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
     osDelay(100);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(LD3_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
     HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
   }
 }

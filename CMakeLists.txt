@@ -49,7 +49,7 @@ else()
     set(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu11")
     set(CMAKE_EXE_LINKER_FLAGS_INIT "-Wl,-gc-sections -T ${LINKER_SCRIPT}")
 
-    PROJECT(deployed_rtos C ASM)
+    PROJECT(deployed_rtos CXX C ASM)
 
     add_definitions(-D__weak=__attribute__\(\(weak\)\) -D__packed=__attribute__\(\(__packed__\)\) -DUSE_HAL_DRIVER -DSTM32F407xx )
 
@@ -59,8 +59,11 @@ else()
 
     add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
     add_subdirectory(external)
+    add_subdirectory(rtos)
+    add_subdirectory(stm32)
     target_link_libraries(${PROJECT_NAME}.elf PUBLIC
             freertos
+            rtos
             hal
             hal_rcc
             hal_gpio
