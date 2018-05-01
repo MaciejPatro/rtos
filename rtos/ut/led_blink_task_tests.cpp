@@ -13,7 +13,7 @@ namespace rtos {
 
 TEST_CASE("Led blink task", "[rtos]")
 {
-  stm32::gpio_memory_layout fake_memory{ .BSRR = 0x0U };
+  stm32::gpio_memory_layout fake_memory{ 0x0U };
   stm32::gpio               gpio_port{ fake_memory };
 
   SECTION("should toggle pin with one loop iteration")
