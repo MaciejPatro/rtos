@@ -181,6 +181,7 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(MEMS_INT2_GPIO_Port, &GPIO_InitStruct);
 }
 
+
 void StartDefaultTask(void const* argument)
 {
   for(;;)
