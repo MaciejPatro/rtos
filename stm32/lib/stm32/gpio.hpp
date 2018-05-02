@@ -8,7 +8,7 @@
 
 #include "memory_address.hpp"
 #include "utils.hpp"
-#include "pin.hpp"
+#include "io_pin.hpp"
 
 namespace stm32 {
 
@@ -55,25 +55,25 @@ public:
     pull_down = 0x00000002U
   };
 
-  void set_mode(mode m, std::uint16_t pin)
+  void set_mode(mode m, io_pin pin)
   {
-    fill_setting<mode, 2>(memory.MODER, m, pin);
-    fill_setting<io_type, 1>(memory.OTYPER, get_io_type(m), pin);
+    fill_setting<mode, 2>(memory.MODER, m, pin.get());
+    fill_setting<io_type, 1>(memory.OTYPER, get_io_type(m), pin.get());
   }
 
-  void set_speed(speed s, std::uint16_t pin)
+  void set_speed(speed s, io_pin pin)
   {
-    fill_setting<speed, 2>(memory.OSPEEDR, s, pin);
+    fill_setting<speed, 2>(memory.OSPEEDR, s, pin.get());
   }
 
-  void set_pull_resistor(pull_resistor p, std::uint16_t pin)
+  void set_pull_resistor(pull_resistor p, io_pin pin)
   {
-    fill_setting<pull_resistor, 2>(memory.PUPDR, p, pin);
+    fill_setting<pull_resistor, 2>(memory.PUPDR, p, pin.get());
   }
 
-  void toggle_pin(std::uint16_t pin)
+  void toggle_pin(io_pin pin)
   {
-    memory.BSRR ^= 1 << pin;
+    memory.BSRR ^= 1 << pin.get();
   }
 
 private:

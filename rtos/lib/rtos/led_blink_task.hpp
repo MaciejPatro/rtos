@@ -24,7 +24,7 @@ public:
 
     while(loop_control())
     {
-      gpio_port.toggle_pin(stm32::io_pin<2>::value);
+      gpio_port.toggle_pin(stm32::io_pin(2));
       osDelay(blink_delay);
     }
   }

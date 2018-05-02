@@ -5,7 +5,7 @@
 ***********************************************/
 
 #include <catch.hpp>
-#include <stm32/pin.hpp>
+#include <stm32/io_pin.hpp>
 
 namespace stm32 {
 
@@ -30,6 +30,13 @@ TEST_CASE("Pin handling", "[stm32][pin]")
     static_assert(is_io_pin<14>::value);
     static_assert(is_io_pin<15>::value);
     static_assert(!is_io_pin<16>::value);
+  }
+
+  SECTION("Should allow comparisons between strong types and get operator")
+  {
+    REQUIRE(5_pin == io_pin(5));
+    REQUIRE(5_pin != io_pin(4));
+    REQUIRE(2 == io_pin(2).get());
   }
 }
 
