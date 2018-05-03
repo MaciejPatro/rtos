@@ -7,8 +7,6 @@
 #include "main_loop.hpp"
 #include <rtos/loops.hpp>
 
-extern "C" {
-
 void main_loop()
 {
   rtos::forever forever_loop;
@@ -16,5 +14,3 @@ void main_loop()
   {
   }
 }
-
-} // extern "C"

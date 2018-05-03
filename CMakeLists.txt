@@ -43,8 +43,10 @@ else()
     set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32F407VGTx_FLASH.ld)
 
     add_definitions(-DARM_MATH_CM4 -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING)
-    set(COMMON_FLAGS "-mcpu=cortex-m4 -mfloat-abi=hard -mfpu=fpv4-sp-d16 -mthumb -mthumb-interwork -ffunction-sections
-        -fdata-sections -g -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs")
+    set(FLOATING_POINT_FLAGS "-mfloat-abi=hard -mfpu=fpv4-sp-d16")
+    set(MTHUMB_FLAGS "-mthumb -mthumb-interwork")
+    set(COMMON_FLAGS "-mcpu=cortex-m4 ${FLOATING_POINT_FLAGS} ${MTHUMB_FLAGS} -ffunction-sections -fdata-sections -g \
+    -fno-common -fmessage-length=0 -specs=nosys.specs -specs=nano.specs")
 
     set(CMAKE_CXX_FLAGS_INIT "${COMMON_FLAGS} -std=c++1z")
     set(CMAKE_C_FLAGS_INIT "${COMMON_FLAGS} -std=gnu11")

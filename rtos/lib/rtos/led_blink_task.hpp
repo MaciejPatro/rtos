@@ -20,11 +20,12 @@ public:
 
   void run()
   {
+    using stm32::operator""_pin;
     LoopType loop_control;
 
     while(loop_control())
     {
-      gpio_port.toggle_pin(stm32::io_pin(2));
+      gpio_port.toggle_pin(2_pin);
       osDelay(blink_delay);
     }
   }
