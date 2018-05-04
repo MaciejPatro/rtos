@@ -3,6 +3,7 @@ pipeline {
     stages {
         stage('Build&Run UTs') {
             steps {
+                sh 'cd .. && rm -rf embedded_build'
                 sh 'scripts/prepare_build.sh uts testing=ON'
                 sh 'cd ../embedded_build/uts && make -j4 && ctest -j4'
             }
