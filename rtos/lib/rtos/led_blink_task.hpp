@@ -16,23 +16,24 @@ template <typename LoopType = forever>
 class led_blink_task
 {
 public:
-  explicit led_blink_task(stm32::gpio& port) : gpio_port{ port } {}
+  explicit led_blink_task(stm32::gpio& port, stm32::io_pin pin) : gpio_port{ port }, led_pin(pin) {}
 
   void run()
   {
-    using stm32::operator""_pin;
-    LoopType loop_control;
+    LoopType     loop_control;
 
     while(loop_control())
     {
-      gpio_port.toggle_pin(13_pin);
+      gpio_port.toggle_pin(led_pin);
       osDelay(blink_delay);
     }
   }
 
 private:
   static constexpr std::uint32_t blink_delay = 500;
-  stm32::gpio&                   gpio_port;
+
+  stm32::gpio&  gpio_port;
+  stm32::io_pin led_pin;
 };
 
 } // namespace rtos

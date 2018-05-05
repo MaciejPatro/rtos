@@ -23,7 +23,7 @@ int main(void)
 
   static stm32::gpio_memory_layout& layout = *(stm32::gpio_memory_layout*)(LD4_GPIO_Port);
   static stm32::gpio                gpio{ layout };
-  static rtos::led_blink_task<>     my_task{ gpio };
+  static rtos::led_blink_task<>     my_task{ gpio, stm32::io_pin(13) };
 
   rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
 
@@ -109,7 +109,6 @@ static void MX_GPIO_Init(void)
     (void)READ_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
   } while(0U);
 
-  /*Configure GPIO pins : LD4_Pin LD3_Pin LD5_Pin LD6_Pin */
   GPIO_InitStruct.Pin   = LD4_Pin | LD3_Pin | LD5_Pin | LD6_Pin;
   GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull  = GPIO_NOPULL;
