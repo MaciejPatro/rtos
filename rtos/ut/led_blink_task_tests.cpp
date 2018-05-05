@@ -20,14 +20,14 @@ TEST_CASE("Led blink task", "[rtos]")
   {
     led_blink_task<once> task{ gpio_port };
     task.run();
-    REQUIRE(0x00000004U == fake_memory.BSRR);
+    REQUIRE(0x00002000U == fake_memory.ODR);
   }
 
   SECTION("should leave pin state unchanged after 2 iterations")
   {
     led_blink_task<twice> task{ gpio_port };
     task.run();
-    REQUIRE(0x0U == fake_memory.BSRR);
+    REQUIRE(0x0U == fake_memory.ODR);
   }
 }
 

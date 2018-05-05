@@ -25,13 +25,13 @@ public:
 
     while(loop_control())
     {
-      gpio_port.toggle_pin(2_pin);
+      gpio_port.toggle_pin(13_pin);
       osDelay(blink_delay);
     }
   }
 
 private:
-  static constexpr std::uint32_t blink_delay = 200;
+  static constexpr std::uint32_t blink_delay = 500;
   stm32::gpio&                   gpio_port;
 };
 

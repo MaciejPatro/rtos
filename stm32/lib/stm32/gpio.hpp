@@ -73,7 +73,7 @@ public:
 
   void toggle_pin(io_pin pin)
   {
-    memory.BSRR ^= 1 << pin.get();
+    memory.ODR ^= 1 << pin.get();
   }
 
 private:

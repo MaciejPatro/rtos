@@ -1,28 +1,30 @@
-
 #include "main.h"
 #include <hal/stm32f4xx_hal.h>
 #include <freertos/CMSIS_RTOS/cmsis_os.h>
 #include <rtos/loops.hpp>
-
-osThreadId defaultTaskHandle;
+#include <rtos/task_supervision.hpp>
+#include <rtos/led_blink_task.hpp>
 
 void        SystemClock_Config(void);
 static void MX_GPIO_Init(void);
-void        StartDefaultTask(void const* argument);
 
 int main(void)
 {
   HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
-  osThreadDef(defaultTask, StartDefaultTask, osPriorityNormal, 0, 128);
-  defaultTaskHandle = osThreadCreate(osThread(defaultTask), NULL);
-  osKernelStart();
+
+  static stm32::gpio_memory_layout& layout = *(stm32::gpio_memory_layout*)(LD4_GPIO_Port);
+  static stm32::gpio                gpio{ layout };
+  static rtos::led_blink_task<>     my_task{ gpio };
+
+  rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
+
+  vTaskStartScheduler();
 
   rtos::forever forever;
   while(forever())
   {
-
   }
 }
 
@@ -182,20 +184,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(MEMS_INT2_GPIO_Port, &GPIO_InitStruct);
-}
-
-
-void StartDefaultTask(void const* argument)
-{
-  for(;;)
-  {
-    osDelay(100);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD5_Pin, GPIO_PIN_SET);
-    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_SET);
-    osDelay(100);
-    HAL_GPIO_WritePin(LD3_GPIO_Port, LD5_Pin, GPIO_PIN_RESET);
-    HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, GPIO_PIN_RESET);
-  }
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
