@@ -1,6 +1,13 @@
 #include "main.hpp"
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wregister"
+
 #include <hal/stm32f4xx_hal.h>
 #include <freertos/CMSIS_RTOS/cmsis_os.h>
+
+#pragma GCC diagnostic pop
+
 #include <rtos/loops.hpp>
 #include <rtos/task_supervision.hpp>
 #include <rtos/led_blink_task.hpp>
@@ -52,7 +59,6 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLQ       = 7;
   if(HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
   }
 
   /**Initializes the CPU, AHB and APB busses clocks
@@ -65,7 +71,6 @@ void SystemClock_Config(void)
 
   if(HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_5) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
   }
 
   PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_I2S;
@@ -73,7 +78,6 @@ void SystemClock_Config(void)
   PeriphClkInitStruct.PLLI2S.PLLI2SR       = 2;
   if(HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
   {
-    _Error_Handler(__FILE__, __LINE__);
   }
 
   /**Configure the Systick interrupt time
@@ -192,16 +196,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
   {
     HAL_IncTick();
   }
-}
-
-void _Error_Handler(char* file, int line)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
-  /* User can add his own implementation to report the HAL error return state */
-  while(1)
-  {
-  }
-  /* USER CODE END Error_Handler_Debug */
 }
 
 #ifdef USE_FULL_ASSERT

@@ -27,10 +27,10 @@ if(testing)
     add_subdirectory(stm32)
     add_subdirectory(rtos)
 else()
-    # specify the cross compiler
+    set(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
+
     set(CMAKE_C_COMPILER_WORKS 1)
     set(CMAKE_CXX_COMPILER_WORKS 1)
-    set(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
     set(CMAKE_C_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
     set(CMAKE_ASM_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-gcc)
     set(CMAKE_CXX_COMPILER ${TOOLCHAIN_PATH}/arm-none-eabi-g++)
