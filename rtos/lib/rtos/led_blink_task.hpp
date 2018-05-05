@@ -24,7 +24,7 @@ public:
 
     while(loop_control())
     {
-      gpio_port.toggle_pin(led_pin);
+      gpio_port.toggle(led_pin);
       osDelay(blink_delay);
     }
   }

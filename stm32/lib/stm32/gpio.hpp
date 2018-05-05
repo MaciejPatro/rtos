@@ -55,23 +55,23 @@ public:
     pull_down = 0x00000002U
   };
 
-  void set_mode(mode m, io_pin pin)
+  void set(mode m, io_pin pin)
   {
     fill_setting<mode, 2>(memory.MODER, m, pin.get());
     fill_setting<io_type, 1>(memory.OTYPER, get_io_type(m), pin.get());
   }
 
-  void set_speed(speed s, io_pin pin)
+  void set(speed s, io_pin pin)
   {
     fill_setting<speed, 2>(memory.OSPEEDR, s, pin.get());
   }
 
-  void set_pull_resistor(pull_resistor p, io_pin pin)
+  void set(pull_resistor p, io_pin pin)
   {
     fill_setting<pull_resistor, 2>(memory.PUPDR, p, pin.get());
   }
 
-  void toggle_pin(io_pin pin)
+  void toggle(io_pin pin)
   {
     memory.ODR ^= 1 << pin.get();
   }

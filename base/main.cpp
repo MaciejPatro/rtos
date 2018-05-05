@@ -24,8 +24,10 @@ int main(void)
   static stm32::gpio_memory_layout& layout = *(stm32::gpio_memory_layout*)(LD4_GPIO_Port);
   static stm32::gpio                gpio{ layout };
   static rtos::led_blink_task<>     my_task{ gpio, stm32::io_pin(13) };
+  static rtos::led_blink_task<>     my1_task{ gpio, stm32::io_pin(12) };
 
   rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
+  rtos::create_task(&my1_task, "blinky1", 128, osPriorityNormal);
 
   vTaskStartScheduler();
 
