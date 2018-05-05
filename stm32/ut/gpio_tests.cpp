@@ -54,12 +54,12 @@ TEST_CASE("Gpio", "[stm32][gpio]")
     tested.toggle_pin(0_pin);
     tested.toggle_pin(1_pin);
     tested.toggle_pin(3_pin);
-    REQUIRE(0x0000000BU == fake_memory.BSRR);
+    REQUIRE(0x0000000BU == fake_memory.ODR);
 
     SECTION("second time it should clear the state")
     {
       tested.toggle_pin(1_pin);
-      REQUIRE(0x00000009U == fake_memory.BSRR);
+      REQUIRE(0x00000009U == fake_memory.ODR);
     }
   }
 }
