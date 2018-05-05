@@ -13,7 +13,7 @@ namespace rtos {
 
 TEST_CASE("Led blink task", "[rtos]")
 {
-  stm32::gpio_memory_layout fake_memory{ 0x0U };
+  stm32::gpio::memory_layout fake_memory{ 0x0U };
 
   stm32::gpio   gpio_port{ fake_memory };
   stm32::io_pin pin{ 13 };

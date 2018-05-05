@@ -12,23 +12,23 @@
 
 namespace stm32 {
 
-struct gpio_memory_layout
-{
-  memory_address MODER;
-  memory_address OTYPER;
-  memory_address OSPEEDR;
-  memory_address PUPDR;
-  memory_address IDR;
-  memory_address ODR;
-  memory_address BSRR;
-  memory_address LCKR;
-  memory_address AFR[2];
-};
-
 class gpio
 {
 public:
-  gpio(gpio_memory_layout& mem) : memory(mem) {}
+  struct memory_layout
+  {
+    memory_address MODER;
+    memory_address OTYPER;
+    memory_address OSPEEDR;
+    memory_address PUPDR;
+    memory_address IDR;
+    memory_address ODR;
+    memory_address BSRR;
+    memory_address LCKR;
+    memory_address AFR[2];
+  };
+
+  gpio(memory_layout& mem) : memory(mem) {}
 
   enum class mode : std::uint32_t
   {
@@ -88,7 +88,7 @@ private:
     return m == mode::input ? io_type::input : io_type::output;
   }
 
-  gpio_memory_layout& memory;
+  memory_layout& memory;
 };
 
 } // namespace stm32
