@@ -5,9 +5,13 @@
 ***********************************************/
 
 #pragma once
+
 #include <freertos/task.h>
+#include <chrono>
 
 namespace rtos {
+
+void delay_task(std::chrono::milliseconds time);
 
 template <typename T>
 void execute_task(void* const task_object)

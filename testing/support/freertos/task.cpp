@@ -1,11 +1,9 @@
 /***********************************************
 *
-* Created by mpatro on 4/29/18.
+* Created by mpatro on 5/6/18.
 *
 ***********************************************/
 
-#include "led_blink_task.hpp"
+#include "task.h"
 
-namespace rtos {
-
-} // namespace rtos
+void vTaskDelay(const std::uint32_t) {}

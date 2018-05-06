@@ -7,8 +7,9 @@
 #pragma once
 
 #include "loops.hpp"
+#include "task_supervision.hpp"
+
 #include <stm32/gpio.hpp>
-#include <freertos/CMSIS_RTOS/cmsis_os.h>
 
 namespace rtos {
 
@@ -20,17 +21,17 @@ public:
 
   void run()
   {
-    LoopType     loop_control;
+    LoopType loop_control;
 
     while(loop_control())
     {
       gpio_port.toggle(led_pin);
-      osDelay(blink_delay);
+      delay_task(blink_delay);
     }
   }
 
 private:
-  static constexpr std::uint32_t blink_delay = 500;
+  static constexpr std::chrono::milliseconds blink_delay{500};
 
   stm32::gpio&  gpio_port;
   stm32::io_pin led_pin;
