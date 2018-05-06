@@ -1,6 +1,10 @@
 project(catch_support)
 
-set(headers freertos/task.h freertos/portable/portmacro.h testing/loops.hpp)
+set(headers freertos/task.h
+            freertos/portable/portmacro.h
+            freertos/FreeRTOS.h
+            testing/loops.hpp)
+
 set(sources freertos/task.cpp)
 
 add_library(catch_support STATIC ${headers} ${sources})
