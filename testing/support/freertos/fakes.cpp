@@ -12,7 +12,7 @@ namespace testing {
 
 mock_rtos mocked_rtos;
 
-mock_rtos& mock_rtos::get_fake()
+mock_rtos& fake_rtos()
 {
   return mocked_rtos;
 }

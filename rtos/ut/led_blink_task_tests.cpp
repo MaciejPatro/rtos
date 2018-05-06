@@ -48,7 +48,7 @@ TEST_CASE("Led blink task", "[rtos]")
 
   SECTION("should toggle pin with one loop iteration")
   {
-    REQUIRE_CALL(testing::mock_rtos::get_fake(), vTaskDelay(500));
+    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(500));
 
     led_blink_task<once> task{ gpio_port, pin };
     task.run();
@@ -58,11 +58,11 @@ TEST_CASE("Led blink task", "[rtos]")
 
   SECTION("should leave pin state unchanged after 2 iterations")
   {
-    REQUIRE_CALL(testing::mock_rtos::get_fake(), vTaskDelay(500)).TIMES(2);
+    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(500)).TIMES(2);
 
     led_blink_task<twice> task{ gpio_port, pin };
     task.run();
-    
+
     REQUIRE(0x0U == fake_memory.ODR);
   }
 }

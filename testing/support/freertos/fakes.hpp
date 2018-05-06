@@ -22,8 +22,9 @@ public:
 class mock_rtos : public trompeloeil::mock_interface<fake::rtos>
 {
 public:
-  static mock_rtos& get_fake();
   IMPLEMENT_MOCK1(vTaskDelay);
 };
+
+mock_rtos& fake_rtos();
 
 } // namespace testing
