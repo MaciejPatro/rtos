@@ -5,5 +5,21 @@
 ***********************************************/
 
 #include "task.h"
+#include "fakes.hpp"
 
-void vTaskDelay(const std::uint32_t) {}
+
+namespace testing {
+
+mock_rtos mocked_rtos;
+
+mock_rtos& mock_rtos::get_fake()
+{
+  return mocked_rtos;
+}
+
+} // namespace testing
+
+void vTaskDelay(const std::uint32_t ticks)
+{
+  testing::mocked_rtos.vTaskDelay(ticks);
+}
