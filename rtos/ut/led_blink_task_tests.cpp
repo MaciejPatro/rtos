@@ -12,20 +12,16 @@
 
 #include <rtos/led_blink_task.hpp>
 
-namespace trompeloeil
-{
+namespace trompeloeil {
 template <>
-void reporter<specialized>::send(
-  severity s,
-  const char* file,
-  unsigned long line,
-  const char* msg)
+void reporter<specialized>::send(severity s, const char* file, unsigned long line, const char* msg)
 {
   std::ostringstream os;
-  if (line) os << file << ':' << line << '\n';
+  if(line)
+    os << file << ':' << line << '\n';
   os << msg;
   auto failure = os.str();
-  if (s == severity::fatal)
+  if(s == severity::fatal)
   {
     FAIL(failure);
   }
@@ -35,22 +31,23 @@ void reporter<specialized>::send(
     CHECK(failure.empty());
   }
 }
-}
+} // namespace trompeloeil
 
 namespace rtos {
 
 TEST_CASE("Led blink task", "[rtos]")
 {
-  stm32::gpio::memory_layout fake_memory{ 0x0U };
+  constexpr std::chrono::milliseconds blink_delay{ 500 };
+  stm32::gpio::memory_layout          fake_memory{ 0x0U };
 
   stm32::gpio   gpio_port{ fake_memory };
   stm32::io_pin pin{ 13 };
 
   SECTION("should toggle pin with one loop iteration")
   {
-    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(500));
+    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(blink_delay.count()));
 
-    led_blink_task<once> task{ gpio_port, pin };
+    led_blink_task<once> task{ gpio_port, pin, blink_delay };
     task.run();
 
     REQUIRE(0x00002000U == fake_memory.ODR);
@@ -58,9 +55,9 @@ TEST_CASE("Led blink task", "[rtos]")
 
   SECTION("should leave pin state unchanged after 2 iterations")
   {
-    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(500)).TIMES(2);
+    REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(blink_delay.count())).TIMES(2);
 
-    led_blink_task<twice> task{ gpio_port, pin };
+    led_blink_task<twice> task{ gpio_port, pin, blink_delay };
     task.run();
 
     REQUIRE(0x0U == fake_memory.ODR);

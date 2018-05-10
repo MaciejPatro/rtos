@@ -21,14 +21,20 @@ int main(void)
   SystemClock_Config();
   MX_GPIO_Init();
 
+  constexpr std::chrono::milliseconds t1_delay{250};
+  constexpr std::chrono::milliseconds t2_delay{500};
+  constexpr std::chrono::milliseconds t3_delay{125};
+
   static stm32::gpio::memory_layout& layout = *(stm32::gpio::memory_layout*)(LD4_GPIO_Port);
 
   static stm32::gpio            gpio{ layout };
-  static rtos::led_blink_task<> my_task{ gpio, stm32::io_pin(13) };
-  static rtos::led_blink_task<> my1_task{ gpio, stm32::io_pin(12) };
+  static rtos::led_blink_task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
+  static rtos::led_blink_task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };
+  static rtos::led_blink_task<> my2_task{ gpio, stm32::io_pin(14), t3_delay };
 
   rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
   rtos::create_task(&my1_task, "blinky1", 128, osPriorityNormal);
+  rtos::create_task(&my2_task, "blink2", 128, osPriorityNormal);
 
   vTaskStartScheduler();
 
