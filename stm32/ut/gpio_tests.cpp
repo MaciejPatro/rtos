@@ -19,19 +19,16 @@ TEST_CASE("Gpio", "[stm32][gpio]")
   {
     tested.set(gpio::mode::output_pp, 5_pin);
     REQUIRE(0x00000400U == fake_memory.MODER);
-    REQUIRE(0x00000020U == fake_memory.OTYPER);
 
     SECTION("additional setup should not reset previous setting")
     {
       tested.set(gpio::mode::output_pp, 0_pin);
       REQUIRE(0x00000401U == fake_memory.MODER);
-      REQUIRE(0x00000021U == fake_memory.OTYPER);
 
       SECTION("new setup should override previous without changing other pins")
       {
         tested.set(gpio::mode::input, 5_pin);
         REQUIRE(0x00000001U == fake_memory.MODER);
-        REQUIRE(0x00000001U == fake_memory.OTYPER);
       }
     }
   }

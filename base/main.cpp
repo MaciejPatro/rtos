@@ -28,6 +28,18 @@ int main(void)
   static stm32::gpio::memory_layout& layout = *(stm32::gpio::memory_layout*)(LD4_GPIO_Port);
 
   static stm32::gpio            gpio{ layout };
+  using stm32::operator""_pin;
+
+  static auto config_led_pin = [&](stm32::io_pin pin) {
+    gpio.set(stm32::gpio::mode::output_pp, pin);
+    gpio.set(stm32::gpio::speed::low, pin);
+    gpio.set(stm32::gpio::pull_resistor::no_pull, pin);
+  };
+
+  config_led_pin(12_pin);
+  config_led_pin(13_pin);
+  config_led_pin(14_pin);
+
   static rtos::led_blink_task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
   static rtos::led_blink_task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };
   static rtos::led_blink_task<> my2_task{ gpio, stm32::io_pin(14), t3_delay };
@@ -110,19 +122,11 @@ void SystemClock_Config(void)
 
 static void MX_GPIO_Init(void)
 {
-  GPIO_InitTypeDef GPIO_InitStruct;
-
   do
   {
     SET_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
     (void)READ_BIT(RCC->AHB1ENR, RCC_AHB1ENR_GPIODEN);
   } while(0U);
-
-  GPIO_InitStruct.Pin   = LD4_Pin | LD3_Pin | LD5_Pin | LD6_Pin;
-  GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull  = GPIO_NOPULL;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)

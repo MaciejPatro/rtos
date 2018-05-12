@@ -33,7 +33,8 @@ public:
   enum class mode : std::uint32_t
   {
     input     = 0x00000000U,
-    output_pp = 0x00000001U
+    output_pp = 0x00000001U,
+    output_od = 0x00000011U
   };
 
   enum class pull_state : std::uint32_t
@@ -58,7 +59,6 @@ public:
   void set(mode m, io_pin pin)
   {
     fill_setting<mode, 2>(memory.MODER, m, pin.get());
-    fill_setting<io_type, 1>(memory.OTYPER, get_io_type(m), pin.get());
   }
 
   void set(speed s, io_pin pin)
@@ -82,11 +82,6 @@ private:
     input  = 0x00000000U,
     output = 0x00000001U
   };
-
-  io_type get_io_type(mode m)
-  {
-    return m == mode::input ? io_type::input : io_type::output;
-  }
 
   memory_layout& memory;
 };
