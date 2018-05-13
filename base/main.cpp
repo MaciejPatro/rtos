@@ -14,12 +14,14 @@
 
 void        SystemClock_Config(void);
 static void MX_GPIO_Init(void);
+static void EXTI_Init();
 
 int main(void)
 {
   HAL_Init();
   SystemClock_Config();
   MX_GPIO_Init();
+  EXTI_Init();
 
   constexpr std::chrono::milliseconds t1_delay{ 250 };
   constexpr std::chrono::milliseconds t2_delay{ 500 };
@@ -32,6 +34,7 @@ int main(void)
   static rtos::led_blink_task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
   static rtos::led_blink_task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };
   static rtos::led_blink_task<> my2_task{ gpio, stm32::io_pin(14), t3_delay };
+  static rtos::led_blink_task<> my3_task{ gpio, stm32::io_pin(15), t3_delay };
 
   rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
   rtos::create_task(&my1_task, "blinky1", 128, osPriorityNormal);
@@ -43,6 +46,24 @@ int main(void)
   while(forever())
   {
   }
+}
+
+void EXTI_Init()
+{
+  GPIO_InitTypeDef GPIO_InitStruct;
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin : PA0 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING_FALLING;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI0_IRQn);
 }
 
 void SystemClock_Config(void)
@@ -123,6 +144,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef* htim)
   if(htim->Instance == TIM1)
   {
     HAL_IncTick();
+  }
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
+{
+  if(GPIO_PIN_0 == GPIO_Pin)
+  {
+    HAL_GPIO_TogglePin(GPIOD, GPIO_PIN_15);
   }
 }
 
