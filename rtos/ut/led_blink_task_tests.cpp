@@ -43,6 +43,15 @@ TEST_CASE("Led blink task", "[rtos]")
   stm32::gpio   gpio_port{ fake_memory };
   stm32::io_pin pin{ 13 };
 
+  SECTION("should configure gpio for given pin")
+  {
+    led_blink_task<once> task{ gpio_port, pin, blink_delay };
+
+    REQUIRE(0x00000000U == fake_memory.OSPEEDR);
+    REQUIRE(0x00000000U == fake_memory.PUPDR);
+    REQUIRE(0x04000000U == fake_memory.MODER);
+  }
+
   SECTION("should toggle pin with one loop iteration")
   {
     REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(blink_delay.count()));

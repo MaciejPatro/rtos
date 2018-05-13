@@ -21,24 +21,13 @@ int main(void)
   SystemClock_Config();
   MX_GPIO_Init();
 
-  constexpr std::chrono::milliseconds t1_delay{250};
-  constexpr std::chrono::milliseconds t2_delay{500};
-  constexpr std::chrono::milliseconds t3_delay{125};
+  constexpr std::chrono::milliseconds t1_delay{ 250 };
+  constexpr std::chrono::milliseconds t2_delay{ 500 };
+  constexpr std::chrono::milliseconds t3_delay{ 125 };
 
   static stm32::gpio::memory_layout& layout = *(stm32::gpio::memory_layout*)(LD4_GPIO_Port);
 
-  static stm32::gpio            gpio{ layout };
-  using stm32::operator""_pin;
-
-  static auto config_led_pin = [&](stm32::io_pin pin) {
-    gpio.set(stm32::gpio::mode::output_pp, pin);
-    gpio.set(stm32::gpio::speed::low, pin);
-    gpio.set(stm32::gpio::pull_resistor::no_pull, pin);
-  };
-
-  config_led_pin(12_pin);
-  config_led_pin(13_pin);
-  config_led_pin(14_pin);
+  static stm32::gpio gpio{ layout };
 
   static rtos::led_blink_task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
   static rtos::led_blink_task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };

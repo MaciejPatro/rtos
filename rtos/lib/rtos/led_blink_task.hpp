@@ -20,6 +20,10 @@ public:
   explicit led_blink_task(stm32::gpio& port, stm32::io_pin pin, std::chrono::milliseconds delay)
       : gpio_port{ port }, led_pin(pin), blink_delay(delay)
   {
+    using namespace stm32;
+    gpio_port.set(gpio::mode::output_pp, pin);
+    gpio_port.set(gpio::speed::low, pin);
+    gpio_port.set(gpio::pull_resistor::no_pull, pin);
   }
 
   void run()
