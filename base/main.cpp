@@ -10,7 +10,7 @@
 
 #include <rtos/loops.hpp>
 #include <rtos/task_supervision.hpp>
-#include <led_blink/led_blink_task.hpp>
+#include <led_blink/task.hpp>
 
 void        SystemClock_Config(void);
 static void MX_GPIO_Init(void);
@@ -31,10 +31,10 @@ int main(void)
 
   static stm32::gpio gpio{ layout };
 
-  static led_blink::led_blink_task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
-  static led_blink::led_blink_task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };
-  static led_blink::led_blink_task<> my2_task{ gpio, stm32::io_pin(14), t3_delay };
-  static led_blink::led_blink_task<> my3_task{ gpio, stm32::io_pin(15), t3_delay };
+  static led_blink::task<> my_task{ gpio, stm32::io_pin(13), t1_delay };
+  static led_blink::task<> my1_task{ gpio, stm32::io_pin(12), t2_delay };
+  static led_blink::task<> my2_task{ gpio, stm32::io_pin(14), t3_delay };
+  static led_blink::task<> my3_task{ gpio, stm32::io_pin(15), t3_delay };
 
   rtos::create_task(&my_task, "blinky", 128, osPriorityNormal);
   rtos::create_task(&my1_task, "blinky1", 128, osPriorityNormal);

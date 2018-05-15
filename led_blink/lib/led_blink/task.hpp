@@ -14,10 +14,10 @@
 namespace led_blink {
 
 template <typename LoopType = rtos::forever>
-class led_blink_task
+class task
 {
 public:
-  explicit led_blink_task(stm32::gpio& port, stm32::io_pin pin, std::chrono::milliseconds delay)
+  explicit task(stm32::gpio& port, stm32::io_pin pin, std::chrono::milliseconds delay)
       : gpio_port{ port }, led_pin(pin), blink_delay(delay)
   {
     using namespace stm32;

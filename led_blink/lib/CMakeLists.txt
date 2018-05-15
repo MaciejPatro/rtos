@@ -1,7 +1,7 @@
 project(led_blink)
 
-set(headers led_blink/led_blink_task.hpp)
-set(sources led_blink/led_blink_task.cpp)
+set(headers led_blink/task.hpp)
+set(sources led_blink/task.cpp)
 
 add_library(${PROJECT_NAME} STATIC ${headers} ${sources})
 
