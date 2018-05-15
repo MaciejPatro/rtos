@@ -9,7 +9,7 @@ set(sources freertos/fakes.cpp)
 
 add_library(rtos_fakes STATIC ${headers} ${sources})
 
-target_link_libraries(rtos_fakes PUBLIC fluent trompeloeil)
+target_link_libraries(rtos_fakes PRIVATE fluent trompeloeil)
 
 target_include_directories(rtos_fakes
         PUBLIC $<BUILD_INTERFACE: ${CMAKE_CURRENT_SOURCE_DIR}>

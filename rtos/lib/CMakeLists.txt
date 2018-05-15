@@ -1,6 +1,6 @@
 project(rtos)
 
-set(headers rtos/led_blink_task.hpp rtos/loops.hpp rtos/task_supervision.hpp)
+set(headers rtos/loops.hpp rtos/task_supervision.hpp)
 set(sources rtos/task_supervision.cpp)
 
 add_library(rtos STATIC ${headers} ${sources})

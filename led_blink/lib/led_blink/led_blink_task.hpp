@@ -6,14 +6,14 @@
 
 #pragma once
 
-#include "loops.hpp"
-#include "task_supervision.hpp"
+#include <rtos/loops.hpp>
+#include <rtos/task_supervision.hpp>
 
 #include <stm32/gpio.hpp>
 
-namespace rtos {
+namespace led_blink {
 
-template <typename LoopType = forever>
+template <typename LoopType = rtos::forever>
 class led_blink_task
 {
 public:
@@ -33,7 +33,7 @@ public:
     while(loop_control())
     {
       gpio_port.toggle(led_pin);
-      delay_task(blink_delay);
+      rtos::delay_task(blink_delay);
     }
   }
 

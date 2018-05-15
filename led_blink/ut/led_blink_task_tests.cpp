@@ -10,7 +10,7 @@
 #include <testing/loops.hpp>
 #include <freertos/fakes.hpp>
 
-#include <rtos/led_blink_task.hpp>
+#include <led_blink/led_blink_task.hpp>
 
 namespace trompeloeil {
 template <>
@@ -33,9 +33,9 @@ void reporter<specialized>::send(severity s, const char* file, unsigned long lin
 }
 } // namespace trompeloeil
 
-namespace rtos {
+namespace led_blink {
 
-TEST_CASE("Led blink task", "[rtos]")
+TEST_CASE("Led blink task", "[led_blink]")
 {
   constexpr std::chrono::milliseconds blink_delay{ 500 };
   stm32::gpio::memory_layout          fake_memory{ 0x0U };
@@ -45,7 +45,7 @@ TEST_CASE("Led blink task", "[rtos]")
 
   SECTION("should configure gpio for given pin")
   {
-    led_blink_task<once> task{ gpio_port, pin, blink_delay };
+    led_blink_task<rtos::once> task{ gpio_port, pin, blink_delay };
 
     REQUIRE(0x00000000U == fake_memory.OSPEEDR);
     REQUIRE(0x00000000U == fake_memory.PUPDR);
@@ -56,7 +56,7 @@ TEST_CASE("Led blink task", "[rtos]")
   {
     REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(blink_delay.count()));
 
-    led_blink_task<once> task{ gpio_port, pin, blink_delay };
+    led_blink_task<rtos::once> task{ gpio_port, pin, blink_delay };
     task.run();
 
     REQUIRE(0x00002000U == fake_memory.ODR);
@@ -66,7 +66,7 @@ TEST_CASE("Led blink task", "[rtos]")
   {
     REQUIRE_CALL(testing::fake_rtos(), vTaskDelay(blink_delay.count())).TIMES(2);
 
-    led_blink_task<twice> task{ gpio_port, pin, blink_delay };
+    led_blink_task<rtos::twice> task{ gpio_port, pin, blink_delay };
     task.run();
 
     REQUIRE(0x0U == fake_memory.ODR);

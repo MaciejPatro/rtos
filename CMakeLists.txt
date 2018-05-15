@@ -27,6 +27,7 @@ if(testing)
     add_subdirectory(external/fluent)
     add_subdirectory(stm32)
     add_subdirectory(rtos)
+    add_subdirectory(led_blink)
 else()
     set(TOOLCHAIN_PATH /home/mpatro/Downloads/dev_tools/gcc-arm/gcc-arm-none-eabi-7-2017-q4-major/bin)
 
@@ -65,9 +66,12 @@ else()
     add_subdirectory(external)
     add_subdirectory(rtos)
     add_subdirectory(stm32)
+    add_subdirectory(led_blink)
     target_link_libraries(${PROJECT_NAME}.elf PUBLIC
             freertos
             rtos
+            stm32
+            led_blink
             hal
             hal_rcc
             hal_gpio
