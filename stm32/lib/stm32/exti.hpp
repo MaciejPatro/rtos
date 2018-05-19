@@ -25,9 +25,10 @@ public:
     memory_address PR;
   };
 
-  enum class trigger_detection : std::uint32_t
+  enum class trigger_detection
   {
     rising,
+    falling,
     rising_falling
   };
 
@@ -35,15 +36,13 @@ public:
 
   void set(trigger_detection detection, io_pin pin)
   {
+    fill_setting(memory.RTSR, state::set, pin.get());
+    fill_setting(memory.FTSR, state::set, pin.get());
+
     if(trigger_detection::rising == detection)
-    {
-      fill_setting(memory.RTSR, state::set, pin.get());
-    }
-    else if(trigger_detection::rising_falling == detection)
-    {
-      fill_setting(memory.RTSR, state::set, pin.get());
-      fill_setting(memory.FTSR, state::set, pin.get());
-    }
+      fill_setting(memory.FTSR, state::clear, pin.get());
+    else if(trigger_detection::falling == detection)
+      fill_setting(memory.RTSR, state::clear, pin.get());
   }
 
 private:
