@@ -25,6 +25,12 @@ public:
     memory_address PR;
   };
 
+  enum class type
+  {
+    interrupt,
+    event
+  };
+
   enum class trigger_detection
   {
     rising,
@@ -33,6 +39,20 @@ public:
   };
 
   explicit exti(memory_layout& layout) : memory(layout) {}
+
+  void set(type t, io_pin pin)
+  {
+    if(type::event == t)
+    {
+      fill_setting(memory.IMR, state::clear, pin.get());
+      fill_setting(memory.EMR, state::set, pin.get());
+    }
+    else
+    {
+      fill_setting(memory.IMR, state::set, pin.get());
+      fill_setting(memory.EMR, state::clear, pin.get());
+    }
+  }
 
   void set(trigger_detection detection, io_pin pin)
   {
