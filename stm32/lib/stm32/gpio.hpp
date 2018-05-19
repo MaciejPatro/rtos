@@ -32,9 +32,12 @@ public:
 
   enum class mode : std::uint32_t
   {
-    input     = 0x00000000U,
-    output_pp = 0x00000001U,
-    output_od = 0x00000011U
+    input             = 0x00000000U,
+    output_pp         = 0x00000001U,
+    output_od         = 0x00000011U,
+    it_rising         = 0x10110000U,
+    it_falling        = 0x10210000U,
+    it_rising_falling = 0x10310000U
   };
 
   enum class pull_state : std::uint32_t

@@ -2,6 +2,7 @@ project(stm32_tests)
 
 add_executable(${PROJECT_NAME}
                gpio_tests.cpp
+               exti_tests.cpp
                pin_tests.cpp
                utils_tests.cpp)
 

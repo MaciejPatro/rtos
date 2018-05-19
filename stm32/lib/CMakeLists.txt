@@ -1,6 +1,7 @@
 project(stm32)
 
 set(headers stm32/gpio.hpp
+            stm32/exti.hpp
             stm32/utils.hpp
             stm32/io_pin.hpp
             stm32/memory_address.hpp)
